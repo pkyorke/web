@@ -65,7 +65,7 @@ const ContactPage: React.FC = () => {
                 </label>
                 <input
                   type="text"
-                  className="w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[rgba(8,10,12,0.95)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-soft)]"
+                  className="w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-soft)]"
                 />
               </div>
               <div className="space-y-1">
