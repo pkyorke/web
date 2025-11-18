@@ -14,7 +14,7 @@ The site is designed as a dark listening room / light installation rather than a
 - **Works console**: [Praetorius](https://github.com/cbassuarez/praetorius) embedded as a static sub-app under `/praetorius/`  
 - **Hosting**: GitHub Pages (project site)
 
-This repository is a **project-specific implementation**, not a general-purpose template, but the structure should be legible for collaborators and curious developers.
+This repository is a project-specific implementation, not a general-purpose template, but the structure should be legible for collaborators and curious developers.
 
 ---
 
