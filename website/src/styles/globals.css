@@ -1,98 +1,170 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+/* 
+  Design tokens — olive, dark, typographic
+  -------------------------------------------------- */
 
 :root {
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  /* Fonts */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+    "Inter", "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+
+  /* Background & text */
   --color-bg-root: #050607;
   --color-bg-elevated: #0c1010;
   --color-text-primary: #f2f3f0;
   --color-text-muted: #a3a7a0;
   --color-border-subtle: rgba(255, 255, 255, 0.06);
+
+  /* Olive scale */
   --olive-50: #f4f5ed;
   --olive-100: #e2e7c8;
   --olive-300: #b3c685;
   --olive-500: #879b4a;
   --olive-700: #5c6d34;
   --olive-900: #323a1e;
-  --gradient-accent: linear-gradient(135deg, #b3c685, #6f8240);
-  --color-accent-secondary: #808ca0;
+
+  /* Accent gradient */
+  --gradient-accent: linear-gradient(120deg, #b3c685, #6f8240);
+
+  color-scheme: dark;
 }
 
-* {
+/* 
+  Layout reset & base
+  -------------------------------------------------- */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
 html,
 body,
 #root {
-  height: 100%;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
 }
 
 body {
-  margin: 0;
-  font-family: var(--font-sans);
   background-color: var(--color-bg-root);
   color: var(--color-text-primary);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+/* 
+  Typography defaults
+  -------------------------------------------------- */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+p {
+  margin: 0;
 }
 
 a {
   color: inherit;
-  text-decoration: none;
+  text-decoration-color: rgba(135, 155, 74, 0.6);
+  text-underline-offset: 3px;
 }
 
-.noise-overlay::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background-image: linear-gradient(145deg, rgba(135, 155, 74, 0.08), transparent);
-  opacity: 0.5;
-  mix-blend-mode: screen;
+a:hover {
+  text-decoration-color: rgba(179, 198, 133, 1);
 }
 
-@layer components {
-  .display-1 {
-    font-size: clamp(2.6rem, 5vw, 3.25rem);
-    line-height: 1.1;
-    letter-spacing: -0.04em;
+/* Mono / meta text helper */
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* 
+  Scrollbars (subtle, on desktop only)
+  -------------------------------------------------- */
+
+@media (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
   }
-  .display-2 {
-    font-size: clamp(1.8rem, 4vw, 2rem);
-    line-height: 1.2;
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
   }
-  .subtitle {
-    font-size: 1.25rem;
-    line-height: 1.4;
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.06);
+    border-radius: 999px;
   }
-  .body {
-    font-size: 1.05rem;
-    line-height: 1.7;
-  }
-  .meta {
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-  }
-  .glass-panel {
-    background: rgba(12, 16, 16, 0.9);
-    border: 1px solid rgba(135, 155, 74, 0.3);
-    border-radius: 1.5rem;
-    backdrop-filter: blur(18px);
-    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.12);
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
-  }
+/* 
+  Utility helpers for “glass” look (optional, used by tailwind via arbitrary classes)
+  -------------------------------------------------- */
+
+.glass-panel {
+  background-color: color-mix(
+    in srgb,
+    var(--color-bg-elevated) 88%,
+    rgba(255, 255, 255, 0.08)
+  );
+  backdrop-filter: blur(18px);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.75);
+}
+
+/* 
+  Code / pre blocks — tame any leftover Vite scaffolding
+  -------------------------------------------------- */
+
+code,
+pre {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+pre {
+  padding: 1rem;
+  border-radius: 0.75rem;
+  background: #060809;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: auto;
+}
+
+/* 
+  Root container helper — matches AppShell max-width & centering
+  (Tailwind does most of the work; this just keeps any raw content from being ugly)
+  -------------------------------------------------- */
+
+.root-shell {
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: 1rem;
 }
