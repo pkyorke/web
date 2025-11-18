@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -11,27 +11,58 @@ const navItems = [
 ];
 
 const pageVariants = {
-  initial: { opacity: 0, y: 16 },
+  initial: { opacity: 0, y: 20 },
   animate: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.22, 0.61, 0.36, 1] },
+    transition: { duration: 0.7, ease: [0.22, 0.61, 0.36, 1] },
   },
-  exit: { opacity: 0, y: 12, transition: { duration: 0.3 } },
+  exit: { opacity: 0, y: -12, transition: { duration: 0.3 } },
+};
+
+type Theme = "dark" | "light";
+
+const getInitialTheme = (): Theme => {
+  if (typeof window === "undefined") return "dark";
+  const stored = window.localStorage.getItem("pk-theme");
+  if (stored === "dark" || stored === "light") return stored;
+  // Prefer system
+  const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)")
+    .matches;
+  return prefersDark ? "dark" : "dark";
 };
 
 const AppShell: React.FC = () => {
   const location = useLocation();
+  const [theme, setTheme] = useState<Theme>(getInitialTheme);
+
+  // Apply theme to root
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    const root = document.documentElement;
+    root.setAttribute("data-theme", theme);
+    window.localStorage.setItem("pk-theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
 
   return (
-    <div className="min-h-screen bg-[#050607] text-[#F2F3F0] font-sans">
-      <div className="mx-auto flex min-h-screen max-w-5xl flex-col px-4 py-6 sm:px-6 lg:px-8">
+    <div className="min-h-screen">
+      <div className="mx-auto flex min-h-screen max-w-6xl flex-col gap-6 px-4 py-8 sm:px-8 lg:px-10">
         {/* Header / Nav */}
-        <header className="mb-6 flex items-center justify-between gap-4">
-          <div className="text-xs tracking-[0.25em] uppercase text-[#A3A7A0]">
-            P. K. Yorke
+        <header className="flex items-center justify-between gap-6 pt-2">
+          <div className="space-y-1">
+            <div className="text-[0.7rem] font-mono uppercase tracking-[0.32em] text-[color:var(--fg-muted)]">
+              P. K. YORKE
+            </div>
+            <div className="text-[0.7rem] text-[color:var(--fg-muted)]">
+              composer · sound artist · technologist
+            </div>
           </div>
-          <nav className="relative flex items-center gap-3 rounded-full bg-[#0C1010]/80 px-2 py-1 text-xs">
+
+          <nav className="nav-glass relative flex items-center gap-2 px-3 py-1.5 text-[0.7rem]">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
@@ -40,8 +71,8 @@ const AppShell: React.FC = () => {
                   [
                     "relative rounded-full px-3 py-1 transition-colors",
                     isActive
-                      ? "text-[#F4F5ED]"
-                      : "text-[#A3A7A0] hover:text-[#F4F5ED]",
+                      ? "text-[color:var(--fg-primary)]"
+                      : "text-[color:var(--fg-muted)] hover:text-[color:var(--fg-primary)]",
                   ].join(" ")
                 }
                 end={item.to === "/"}
@@ -54,7 +85,7 @@ const AppShell: React.FC = () => {
                         className="absolute inset-0 rounded-full"
                         style={{
                           background:
-                            "linear-gradient(120deg,#B3C685,#6F8240)",
+                            "linear-gradient(120deg,var(--accent-soft),var(--accent-deep))",
                         }}
                         transition={{
                           type: "spring",
@@ -70,6 +101,32 @@ const AppShell: React.FC = () => {
                 )}
               </NavLink>
             ))}
+
+            {/* Theme toggle */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="relative ml-1 flex h-7 w-10 items-center rounded-full border border-[color:var(--glass-border-soft)] bg-[rgba(8,10,12,0.9)] px-1 text-[0.6rem] text-[color:var(--fg-muted)] outline-none"
+            >
+              <motion.div
+                layout
+                className="flex h-5 w-5 items-center justify-center rounded-full"
+                style={{
+                  background:
+                    theme === "dark"
+                      ? "radial-gradient(circle at 30% 20%, #facc15, transparent 60%), radial-gradient(circle at 70% 80%, #fb923c, transparent 60%)"
+                      : "radial-gradient(circle at 30% 20%, #38bdf8, transparent 60%), radial-gradient(circle at 70% 80%, #a5b4fc, transparent 60%)",
+                }}
+                transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                animate={{
+                  x: theme === "dark" ? 0 : 16,
+                }}
+              >
+                <span className="text-[0.7rem] leading-none">
+                  {theme === "dark" ? "◐" : "☼"}
+                </span>
+              </motion.div>
+            </button>
           </nav>
         </header>
 
@@ -90,7 +147,7 @@ const AppShell: React.FC = () => {
         </main>
 
         {/* Footer */}
-        <footer className="mt-auto border-t border-white/5 pt-4 text-[0.7rem] text-[#73776F]">
+        <footer className="mt-auto border-t border-[color:var(--line-subtle)] pt-4 text-[0.7rem] text-[color:var(--fg-muted)]">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <span>© {new Date().getFullYear()} P. K. Yorke</span>
             <span className="font-mono">
