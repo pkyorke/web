@@ -7,6 +7,7 @@ const basePath = '/artist-portfolio/';
 export default defineConfig({
   base: basePath,
   plugins: [react()],
+  base: "/web/", 
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
