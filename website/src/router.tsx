@@ -22,8 +22,8 @@ const router = createBrowserRouter(
     </Route>
   ),
   {
-    // IMPORTANT: match the Vite base for GitHub Pages project site
-    basename: "/web",
+    // IMPORTANT: keep this in sync with Vite base
+    basename: import.meta.env.BASE_URL,
   }
 );
 
