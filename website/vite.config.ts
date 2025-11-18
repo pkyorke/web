@@ -2,10 +2,9 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'node:path';
 
-const basePath = "/web/"; 
-
 export default defineConfig({
-  base: basePath,
+  // For a custom domain (pkyorke.com), assets should be served from the root.
+  base: '/', 
   plugins: [react()],
   resolve: {
     alias: {
