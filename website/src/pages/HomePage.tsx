@@ -44,7 +44,7 @@ const HomePage: React.FC = () => {
               <span className="font-mono uppercase tracking-[0.18em] text-[color:var(--fg-muted)]">
                 role
               </span>
-              <div className="relative h-[1.2rem] overflow-hidden">
+              <div className="relative flex h-[1.6rem] items-center overflow-hidden">
                 <AnimatePresence mode="wait">
                   <motion.span
                     key={roles[roleIndex]}
@@ -52,7 +52,7 @@ const HomePage: React.FC = () => {
                     animate={{ y: "0%", opacity: 1 }}
                     exit={{ y: "-100%", opacity: 0 }}
                     transition={{ duration: 0.55, ease: [0.22, 0.61, 0.36, 1] }}
-                    className="inline-flex items-center rounded-full bg-[rgba(15,18,21,0.9)] px-3 py-1 text-[0.7rem] font-mono uppercase tracking-[0.2em] text-[color:var(--accent-soft)] border border-[color:var(--line-subtle)]"
+                    className="inline-flex items-center rounded-full bg-[color:var(--bg-2)] px-3 py-0.5 text-[0.7rem] font-mono uppercase tracking-[0.2em] text-[color:var(--accent-soft)] border border-[color:var(--line-subtle)]"
                   >
                     {roles[roleIndex]}
                   </motion.span>
@@ -84,7 +84,7 @@ const HomePage: React.FC = () => {
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
               <Link
                 to="/about"
-                className="inline-flex items-center rounded-full border border-[color:var(--line-subtle)] bg-[rgba(15,18,21,0.75)] px-5 py-2 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-soft)]"
+                className="inline-flex items-center rounded-full border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-5 py-2 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-soft)]"
               >
                 About
               </Link>
@@ -128,10 +128,10 @@ const HomePage: React.FC = () => {
               </div>
             </div>
             <div className="flex flex-wrap gap-2 text-[0.7rem]">
-              <span className="rounded-full border border-[color:var(--line-subtle)] bg-[rgba(8,10,12,0.95)] px-3 py-1 font-mono uppercase tracking-[0.18em]">
+              <span className="rounded-full border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-1 font-mono uppercase tracking-[0.18em]">
                 installation
               </span>
-              <span className="rounded-full border border-[color:var(--line-subtle)] bg-[rgba(8,10,12,0.95)] px-3 py-1 font-mono uppercase tracking-[0.18em]">
+              <span className="rounded-full border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-1 font-mono uppercase tracking-[0.18em]">
                 electronics
               </span>
             </div>
