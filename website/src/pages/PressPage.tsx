@@ -1,124 +1,123 @@
-import { AnimatePresence, motion } from 'framer-motion';
-import { useMemo, useState } from 'react';
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
-const categories = ['All', 'Reviews', 'Features', 'Interviews'];
-const years = ['All', '2025', '2024', '2023'];
+type Category = "All" | "Reviews" | "Features" | "Interviews";
 
-const pressItems = [
+interface PressItem {
+  id: string;
+  outlet: string;
+  title: string;
+  year: number;
+  category: Category;
+  excerpt: string;
+  url?: string;
+}
+
+const PRESS: PressItem[] = [
   {
-    title: 'Scores that breathe in augmented space',
-    outlet: 'Tonal Field',
-    year: '2025',
-    type: 'Features',
-    excerpt: 'An immersive profile of Praetorius and the distributed ensemble building manuscripts that glow, drift, and react to performers.',
-    link: '#features-1',
+    id: "1",
+    outlet: "Publication",
+    title: "Article headline goes here",
+    year: 2025,
+    category: "Reviews",
+    excerpt: "Short excerpt from the text or summary of the coverage.",
+    url: "#",
   },
-  {
-    title: 'The console rewriting how we rehearse',
-    outlet: 'Wavefront Review',
-    year: '2024',
-    type: 'Reviews',
-    excerpt: 'A detailed review of the Praetorius console in performance at CTM Vorspiel, emphasizing tactile typography and community access.',
-    link: '#reviews-1',
-  },
-  {
-    title: 'Interview: Listening through light',
-    outlet: 'Diffuse Audio',
-    year: '2023',
-    type: 'Interviews',
-    excerpt: 'Praetorius discusses glowing manuscripts, antifascist choirs, and how code can sustain improvisation without freezing it.',
-    link: '#interviews-1',
-  },
-  {
-    title: 'Chiaroscuro scores for public space',
-    outlet: 'City Resonances',
-    year: '2024',
-    type: 'Features',
-    excerpt: 'An essay tracing recent installations and how olive light has become a dramaturgical tool for collective listening.',
-    link: '#features-2',
-  },
+  // add more later
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 0.61, 0.36, 1] } },
-  exit: { opacity: 0, y: -10, transition: { duration: 0.2 } },
-};
+const CATEGORIES: Category[] = ["All", "Reviews", "Features", "Interviews"];
 
-const chipClasses = (active: boolean) =>
-  `rounded-full border px-4 py-2 text-xs uppercase tracking-[0.2em] transition ${
-    active ? 'border-[color:var(--olive-500)] text-[color:var(--olive-100)]' : 'border-[color:var(--color-border-subtle)] text-[color:var(--color-text-muted)] hover:border-[color:var(--olive-500)]'
-  }`;
+const PressPage: React.FC = () => {
+  const [category, setCategory] = useState<Category>("All");
 
-const PressPage = () => {
-  const [category, setCategory] = useState('All');
-  const [year, setYear] = useState('All');
-
-  const filteredItems = useMemo(
-    () =>
-      pressItems.filter((item) =>
-        (category === 'All' || item.type === category) && (year === 'All' || item.year === year)
-      ),
-    [category, year]
-  );
+  const filtered =
+    category === "All"
+      ? PRESS
+      : PRESS.filter((item) => item.category === category);
 
   return (
-    <div className="space-y-10">
-      <div>
-        <p className="meta text-[color:var(--olive-100)]">Press</p>
-        <h1 className="display-1 mt-2">Signals from the field.</h1>
-      </div>
-      <div className="flex flex-wrap gap-3">
-        {categories.map((cat) => (
-          <button key={cat} className={chipClasses(category === cat)} onClick={() => setCategory(cat)}>
-            {cat}
-          </button>
-        ))}
-      </div>
-      <div className="flex flex-wrap gap-3">
-        {years.map((option) => (
-          <button key={option} className={chipClasses(year === option)} onClick={() => setYear(option)}>
-            {option}
-          </button>
-        ))}
-      </div>
-      <AnimatePresence mode="popLayout">
-        <div className="grid gap-6 md:grid-cols-2">
-          {filteredItems.map((item) => (
-            <motion.article
-              key={`${item.title}-${item.year}`}
-              variants={cardVariants}
-              initial="hidden"
-              animate="visible"
-              exit="exit"
-              whileHover={{ scale: 1.02 }}
-              className="group rounded-3xl border border-[color:var(--color-border-subtle)] bg-[color:var(--color-bg-elevated)]/95 p-6 shadow-glass"
+    <section className="space-y-8">
+      <header className="space-y-3">
+        <h1 className="text-2xl md:text-3xl">Press</h1>
+        <p className="max-w-xl text-xs leading-relaxed text-[#A3A7A0]">
+          Reviews, features, and conversations around recent works.
+        </p>
+      </header>
+
+      {/* Filters */}
+      <div className="flex flex-wrap items-center gap-3">
+        {CATEGORIES.map((cat) => {
+          const active = cat === category;
+          return (
+            <motion.button
+              key={cat}
+              type="button"
+              onClick={() => setCategory(cat)}
+              className="relative rounded-full border px-3 py-1 text-[0.7rem] font-mono uppercase tracking-[0.18em]"
+              style={{
+                borderColor: active ? "rgba(179,198,133,0.8)" : "rgba(255,255,255,0.12)",
+                color: active ? "#F4F5ED" : "#A3A7A0",
+              }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
             >
-              <div className="meta text-[color:var(--color-text-muted)]">{item.outlet}</div>
-              <a href={item.link} className="display-2 mt-3 block text-[color:var(--olive-50)] group-hover:text-[color:var(--olive-100)]">
-                {item.title}
-              </a>
-              <div className="mt-4 flex items-center gap-4 text-xs font-mono uppercase tracking-[0.2em] text-[color:var(--color-text-muted)]">
-                <span>{item.year}</span>
-                <span>{item.type}</span>
+              {active && (
+                <motion.span
+                  layoutId="press-pill"
+                  className="absolute inset-0 rounded-full"
+                  style={{
+                    background:
+                      "linear-gradient(120deg,rgba(179,198,133,0.25),rgba(111,130,64,0.35))",
+                  }}
+                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                />
+              )}
+              <span className="relative z-10 mix-blend-screen">{cat}</span>
+            </motion.button>
+          );
+        })}
+      </div>
+
+      {/* Cards */}
+      <AnimatePresence mode="popLayout">
+        <div className="grid gap-4 md:grid-cols-2">
+          {filtered.map((item) => (
+            <motion.article
+              key={item.id}
+              layout
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.25 }}
+              className="group relative overflow-hidden rounded-2xl border border-white/7 bg-[#0C1010]/85 p-4"
+            >
+              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#879B4A] to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+              <div className="mb-2 text-[0.65rem] font-mono uppercase tracking-[0.25em] text-[#A3A7A0]">
+                {item.outlet} · {item.year} · {item.category}
               </div>
-              <p className="mt-4 text-sm leading-relaxed text-[color:var(--color-text-muted)]">{item.excerpt}</p>
-              <span className="sr-only">Read more</span>
-              <div className="mt-5 h-0.5 w-full origin-left scale-x-0 bg-gradient-to-r from-[color:var(--olive-500)] to-[color:var(--olive-300)] transition group-hover:scale-x-100" />
+              <h2 className="mb-2 text-sm font-medium text-[#F2F3F0]">
+                {item.url ? (
+                  <a
+                    href={item.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="underline decoration-[#879B4A]/40 decoration-1 underline-offset-2"
+                  >
+                    {item.title}
+                  </a>
+                ) : (
+                  item.title
+                )}
+              </h2>
+              <p className="text-[0.8rem] leading-relaxed text-[#D5D8CE]">
+                {item.excerpt}
+              </p>
             </motion.article>
           ))}
-          {filteredItems.length === 0 && (
-            <motion.div
-              className="rounded-3xl border border-[color:var(--color-border-subtle)] p-8 text-center text-[color:var(--color-text-muted)]"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-            >
-              No press items for this filter yet.
-            </motion.div>
-          )}
         </div>
       </AnimatePresence>
-    </div>
+    </section>
   );
 };
 
