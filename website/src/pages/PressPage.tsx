@@ -64,10 +64,11 @@ const PressPage: React.FC = () => {
                           "linear-gradient(120deg,var(--accent-soft),var(--accent-deep))",
                       }
                     : {
-                        backgroundColor: "rgba(12,16,20,0.9)",
+                        backgroundColor: "var(--bg-2)",
                         border: "1px solid var(--line-subtle)",
                       }
                 }
+
               >
                 {cat}
               </motion.button>
