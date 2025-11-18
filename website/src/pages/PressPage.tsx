@@ -1,121 +1,122 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-type Category = "All" | "Reviews" | "Features" | "Interviews";
-
-interface PressItem {
-  id: string;
-  outlet: string;
-  title: string;
-  year: number;
-  category: Category;
-  excerpt: string;
-  url?: string;
-}
-
-const PRESS: PressItem[] = [
-  {
-    id: "1",
-    outlet: "Publication",
-    title: "Article headline goes here",
-    year: 2025,
-    category: "Reviews",
-    excerpt: "Short excerpt from the text or summary of the coverage.",
-    url: "#",
-  },
-  // add more later
-];
-
-const CATEGORIES: Category[] = ["All", "Reviews", "Features", "Interviews"];
+type PressCategory = "all" | "photo" | "video" | "article";
 
 const PressPage: React.FC = () => {
-  const [category, setCategory] = useState<Category>("All");
+  const [filter, setFilter] = useState<PressCategory>("all");
 
-  const filtered =
-    category === "All"
-      ? PRESS
-      : PRESS.filter((item) => item.category === category);
+  // If you already have press data, adapt this type & mapping;
+  // otherwise this is a stub.
+  const items = [
+    {
+      id: 1,
+      type: "photo" as PressCategory,
+      title: "Studio portrait",
+      outlet: "Photographer / credit",
+      year: "2025",
+      note: "High-res press photo.",
+    },
+    {
+      id: 2,
+      type: "article" as PressCategory,
+      title: "Feature or review headline",
+      outlet: "Publication",
+      year: "2024",
+      note: "Short description or pull note.",
+    },
+  ];
+
+  const visible =
+    filter === "all" ? items : items.filter((i) => i.type === filter);
 
   return (
     <section className="space-y-8">
-      <header className="space-y-3">
-        <h1 className="text-2xl md:text-3xl">Press</h1>
-        <p className="max-w-xl text-xs leading-relaxed text-[#A3A7A0]">
-          Reviews, features, and conversations around recent works.
+      <header className="space-y-2 max-w-2xl">
+        <h2>Press &amp; media</h2>
+        <p className="text-[0.9rem] text-[color:var(--fg-muted)]">
+          Images, video, and materials for presenters and writers.
         </p>
       </header>
 
-      {/* Filters */}
-      <div className="flex flex-wrap items-center gap-3">
-        {CATEGORIES.map((cat) => {
-          const active = cat === category;
-          return (
-            <motion.button
-              key={cat}
-              type="button"
-              onClick={() => setCategory(cat)}
-              className="relative rounded-full border px-3 py-1 text-[0.7rem] font-mono uppercase tracking-[0.18em]"
-              style={{
-                borderColor: active ? "rgba(179,198,133,0.8)" : "rgba(255,255,255,0.12)",
-                color: active ? "#F4F5ED" : "#A3A7A0",
-              }}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              {active && (
-                <motion.span
-                  layoutId="press-pill"
-                  className="absolute inset-0 rounded-full"
-                  style={{
-                    background:
-                      "linear-gradient(120deg,rgba(179,198,133,0.25),rgba(111,130,64,0.35))",
-                  }}
-                  transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                />
-              )}
-              <span className="relative z-10 mix-blend-screen">{cat}</span>
-            </motion.button>
-          );
-        })}
+      {/* Category chips */}
+      <div className="flex flex-wrap gap-2 text-[0.75rem]">
+        {(["all", "photo", "video", "article"] as PressCategory[]).map(
+          (cat) => {
+            const active = filter === cat;
+            return (
+              <motion.button
+                key={cat}
+                type="button"
+                onClick={() => setFilter(cat)}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                className={[
+                  "relative flex items-center rounded-full px-4 py-1.5 font-mono uppercase tracking-[0.18em]",
+                  active
+                    ? "text-[color:var(--fg-invert)]"
+                    : "text-[color:var(--fg-soft)]",
+                ].join(" ")}
+                style={
+                  active
+                    ? {
+                        backgroundImage:
+                          "linear-gradient(120deg,var(--accent-soft),var(--accent-deep))",
+                      }
+                    : {
+                        backgroundColor: "rgba(12,16,20,0.9)",
+                        border: "1px solid var(--line-subtle)",
+                      }
+                }
+              >
+                {cat}
+              </motion.button>
+            );
+          }
+        )}
       </div>
 
-      {/* Cards */}
+      {/* Media grid */}
       <AnimatePresence mode="popLayout">
-        <div className="grid gap-4 md:grid-cols-2">
-          {filtered.map((item) => (
+        <motion.div
+          layout
+          className="grid gap-5 md:grid-cols-2 xl:grid-cols-3"
+        >
+          {visible.map((item) => (
             <motion.article
               key={item.id}
               layout
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
-              transition={{ duration: 0.25 }}
-              className="group relative overflow-hidden rounded-2xl border border-white/7 bg-[#0C1010]/85 p-4"
+              exit={{ opacity: 0, y: -10 }}
+              className="glass-panel relative p-4"
+              whileHover={{ y: -4, scale: 1.01 }}
             >
-              <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#879B4A] to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-              <div className="mb-2 text-[0.65rem] font-mono uppercase tracking-[0.25em] text-[#A3A7A0]">
-                {item.outlet} · {item.year} · {item.category}
-              </div>
-              <h2 className="mb-2 text-sm font-medium text-[#F2F3F0]">
-                {item.url ? (
-                  <a
-                    href={item.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="underline decoration-[#879B4A]/40 decoration-1 underline-offset-2"
-                  >
+              <div className="pointer-events-none absolute inset-px rounded-[1.4rem] border border-[color:var(--glass-border-soft)]" />
+              <div className="relative z-10 space-y-3 text-[0.85rem] text-[color:var(--fg-soft)]">
+                {/* Placeholder media block */}
+                <div className="h-32 rounded-[1rem] border border-[color:var(--line-subtle)] bg-[radial-gradient(circle_at_0%_0%,rgba(55,224,215,0.22),transparent_55%),radial-gradient(circle_at_100%_100%,rgba(148,163,254,0.25),transparent_55%),linear-gradient(135deg,#020617,#020617)]" />
+
+                <div className="space-y-1">
+                  <div className="flex items-center justify-between gap-2 text-[0.8rem]">
+                    <span className="font-mono uppercase tracking-[0.18em] text-[color:var(--fg-muted)]">
+                      {item.outlet}
+                    </span>
+                    <span className="rounded-full border border-[color:var(--line-subtle)] bg-[rgba(8,10,12,0.95)] px-2 py-0.5 text-[0.7rem] font-mono uppercase tracking-[0.18em]">
+                      {item.year}
+                    </span>
+                  </div>
+                  <div className="font-serif text-[0.9rem]">
                     {item.title}
-                  </a>
-                ) : (
-                  item.title
-                )}
-              </h2>
-              <p className="text-[0.8rem] leading-relaxed text-[#D5D8CE]">
-                {item.excerpt}
-              </p>
+                  </div>
+                  <p className="text-[0.8rem] text-[color:var(--fg-muted)]">
+                    {item.note}
+                  </p>
+                </div>
+              </div>
             </motion.article>
           ))}
-        </div>
+        </motion.div>
       </AnimatePresence>
     </section>
   );
