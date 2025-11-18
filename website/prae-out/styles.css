@@ -1,0 +1,7 @@
+/* Praetorius Works Console — minimal CSS seed (merge with your global/page CSS) */
+#works-console{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;color:var(--fg,#111);background:var(--bg,transparent);padding:.5rem}
+#works-console a{color:inherit;text-decoration:underline}
+#works-console .btn{padding:.4rem .7rem;border:1px solid var(--line,rgba(255,255,255,.18));border-radius:.6rem;background:transparent;cursor:pointer}#works-console .line{opacity:.92;transition:opacity .2s}
+#works-console .line.muted{opacity:.62}
+#works-console .actions{display:flex;gap:.6rem;margin:.25rem 0 .6rem}
+#works-console .toast{position:sticky;bottom:.5rem;align-self:flex-end;padding:.5rem .7rem;border-radius:.6rem;background:rgba(0,0,0,.7);backdrop-filter:blur(6px)}

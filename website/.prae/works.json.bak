@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "works": [
+    {
+      "id": 1,
+      "slug": "test1",
+      "title": "PAUL TEST 1",
+      "oneliner": "This is paul's first work.",
+      "description": "This is paul's first work.This is paul's first work. This is paul's first work. This is paul's first work. This is paul's first work. This is paul's first work. This is paul's first work. This is paul's first work.This is paul's first work. This is paul's first work. This is paul's first work. This is paul's first work.",
+      "audio": "example.com",
+      "pdf": null,
+      "cues": []
+    }
+  ]
+}

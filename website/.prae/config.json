@@ -1,0 +1,40 @@
+{
+  "theme": "dark",
+  "output": {
+    "minify": false,
+    "embed": false
+  },
+  "ui": {
+    "skin": "console",
+    "allowUrlOverride": true
+  },
+  "site": {
+    "firstName": "",
+    "lastName": "",
+    "fullName": "",
+    "copyrightName": "",
+    "listLabel": "Works List",
+    "subtitle": "",
+    "updated": {
+      "mode": "auto",
+      "value": ""
+    },
+    "links": [
+      {
+        "label": "Home",
+        "href": "#",
+        "external": false
+      },
+      {
+        "label": "Projects",
+        "href": "#",
+        "external": false
+      },
+      {
+        "label": "Contact",
+        "href": "#",
+        "external": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "works": [
+    {
+      "id": 1,
+      "slug": "test2",
+      "title": "PAUL TEST 2",
+      "oneliner": "This is paul's second work.",
+      "description": "This is paul's second work. This is paul's second work.",
+      "audio": "This is paul's second work.",
+      "pdf": "f",
+      "cues": [
+        {
+          "label": "@0:00",
+          "t": 0
+        }
+      ]
+    }
+  ]
+}

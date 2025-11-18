@@ -1,0 +1,54 @@
+<!doctype html>
+<html data-skin="typescatter" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Praetorius — TypeScatter</title>
+  <link rel="stylesheet" href="./style.css"/>
+  <meta name="prae-data-source" content="user">
+</head>
+<body class="prae-theme-light prae-theme-dark" data-theme="light" data-prae-banner>
+  <header class="ts-header" role="banner">
+    <div class="ts-header-brand">
+      <span class="ts-site-title" data-site-title></span>
+      <span class="ts-site-subtitle" data-site-subtitle></span>
+    </div>
+    <nav id="prae-nav" class="ts-nav" aria-label="Site links"></nav>
+    <button id="wc-theme-toggle" class="ts-theme-toggle" type="button" role="switch" aria-checked="false">Light</button>
+  </header>
+
+  <main class="ts-main" role="main">
+    <section id="ts-field" class="ts-field" aria-label="Typescatter works"></section>
+  </main>
+
+  <footer id="ts-footer" class="ts-footer" role="contentinfo">
+    <div class="ts-footer-left">
+      <span class="ts-footer-copy" data-footer-copy></span>
+      <a class="prae-badge" data-footer-badge href="https://www.npmjs.com/package/praetorius" target="_blank" rel="noopener"></a>
+    </div>
+    <div class="ts-footer-title" data-footer-title data-empty="1"></div>
+    <div class="ts-footer-controls" role="toolbar" aria-label="Work controls">
+      <button type="button" class="ts-foot-btn" data-role="pdf" aria-disabled="true" disabled>PDF</button>
+      <button type="button" class="ts-foot-btn" data-role="play" aria-disabled="true" aria-pressed="false" disabled>Play ▷</button>
+      <div class="ts-foot-cues">
+        <button type="button" class="ts-foot-btn" data-role="cues" aria-disabled="true" aria-haspopup="true" aria-expanded="false" disabled>Play@</button>
+        <div class="ts-cue-pop" data-cue-list hidden></div>
+      </div>
+    </div>
+    <span class="ts-footer-live" data-footer-live aria-live="polite"></span>
+  </footer>
+
+  <div class="ts-live" data-live aria-live="polite"></div>
+  <aside class="ts-hint" data-hint hidden>
+    <p class="ts-hint-text">Tip: click a title to reveal its details; drag to arrange.</p>
+    <button type="button" class="ts-hint-dismiss" data-hint-dismiss>Dismiss</button>
+  </aside>
+
+  <script type="module" src="./main.js" defer></script>
+<link rel="stylesheet" href="./styles.css">
+<link rel="stylesheet" href="./app.css">
+<script id="prae-data" data-source="user" data-count="1">window.__PRAE_DATA__ = {"works":[{"id":1,"slug":"test2","title":"PAUL TEST 2","oneliner":"This is paul's second work.","description":"This is paul's second work. This is paul's second work.","audio":"This is paul's second work.","pdf":"f","cues":[{"label":"@0:00","at":0}],"audioUrl":"This is paul's second work.","pdfUrl":"f","audioId":"wc-a1","one":"This is paul's second work.","onelinerEffective":"This is paul's second work.","descriptionEffective":"This is paul's second work. This is paul's second work."}],"pageFollowMaps":{},"config":{"theme":"dark","site":{"firstName":"","lastName":"","fullName":"","copyrightName":"","listLabel":"Works List","subtitle":"","updated":{"mode":"auto","value":""},"links":[{"label":"Home","href":"#","external":false},{"label":"Projects","href":"#","external":false},{"label":"Contact","href":"#","external":false}]}},"source":"user","seeded":false,"count":1,"schemaVersion":"0.2.8","warnings":[]};</script>
+<script src="./script.js" defer></script>
+<script type="module" src="./app.js" defer></script>
+</body>
+</html>
