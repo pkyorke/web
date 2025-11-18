@@ -69,7 +69,7 @@ const AppShell: React.FC = () => {
                 to={item.to}
                 className={({ isActive }) =>
                   [
-                    "relative rounded-full px-3 py-1 transition-colors",
+                    "relative rounded-full px-4 py-2 transition-colors",
                     isActive
                       ? "text-[color:var(--fg-primary)]"
                       : "text-[color:var(--fg-muted)] hover:text-[color:var(--fg-primary)]",
@@ -80,20 +80,23 @@ const AppShell: React.FC = () => {
                 {({ isActive }) => (
                   <span className="relative inline-flex items-center">
                     {isActive && (
-                      <motion.span
-                        layoutId="nav-pill"
-                        className="absolute inset-0 rounded-full"
-                        style={{
-                          background:
-                            "linear-gradient(120deg,var(--accent-soft),var(--accent-deep))",
-                        }}
-                        transition={{
-                          type: "spring",
-                          stiffness: 450,
-                          damping: 35,
-                        }}
-                      />
-                    )}
+                    <motion.span
+                      layoutId="nav-pill"
+                      className="absolute inset-0 rounded-full"
+                      style={{
+                        background:
+                          theme === "dark"
+                            ? "linear-gradient(120deg,var(--accent-soft),var(--accent-deep))"
+                            : "linear-gradient(120deg,var(--accent-soft),var(--accent-deep))",
+                        // accent-soft/deep are amber in light theme after CSS change
+                      }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 450,
+                        damping: 35,
+                      }}
+                    />
+                  )}
                     <span className="relative z-10 mix-blend-screen">
                       {item.label}
                     </span>
@@ -106,7 +109,7 @@ const AppShell: React.FC = () => {
             <button
               type="button"
               onClick={toggleTheme}
-              className="relative ml-1 flex h-7 w-10 items-center rounded-full border border-[color:var(--glass-border-soft)] bg-[rgba(8,10,12,0.9)] px-1 text-[0.6rem] text-[color:var(--fg-muted)] outline-none"
+              className="relative ml-1 flex h-7 w-10 items-center rounded-full border border-[color:var(--glass-border-soft)] bg-[color:var(--bg-2)] px-1 text-[0.6rem] text-[color:var(--fg-muted)] outline-none"
             >
               <motion.div
                 layout
