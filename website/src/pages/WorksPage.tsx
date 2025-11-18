@@ -1,30 +1,41 @@
-import { motion } from 'framer-motion';
+import React from "react";
+import { motion } from "framer-motion";
 
-const WorksPage = () => {
+const WorksPage: React.FC = () => {
   const iframeSrc = `${import.meta.env.BASE_URL}praetorius/index.html`;
+
   return (
-    <div className="space-y-8">
-      <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-        <p className="meta text-[color:var(--olive-100)]">Typographic Console</p>
-        <h1 className="display-1 mt-2">Works</h1>
-        <p className="mt-4 max-w-2xl text-[color:var(--color-text-muted)]">
-          Explore the Praetorius console (skin: typescatter) for a living archive of scores, annotations, media, and live renderings. Use the filters inside the console to traverse seasons, ensembles, and media states.
+    <section className="space-y-6">
+      <header className="space-y-3">
+        <h1 className="text-2xl md:text-3xl">Works</h1>
+        <p className="max-w-xl text-xs leading-relaxed text-[#A3A7A0]">
+          Explore scores, audio, and project metadata in an interactive console.
+          Use the filters and detail views inside the window for the best
+          experience.
         </p>
-      </motion.div>
+      </header>
+
       <motion.div
-        className="rounded-[2rem] border border-[color:var(--olive-700)] bg-[color:var(--color-bg-elevated)]/95 p-4 shadow-glass"
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.1 }}
+        className="relative overflow-hidden rounded-3xl border border-[#5C6D34]/50 bg-[#0C1010]/90 shadow-[0_20px_70px_rgba(0,0,0,0.85)]"
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0, transition: { duration: 0.6 } }}
       >
-        <iframe
-          title="Praetorius Works Console"
-          src={iframeSrc}
-          loading="lazy"
-          className="h-[75vh] w-full rounded-[1.5rem] border border-[color:var(--color-border-subtle)] bg-black"
-        />
+        <div className="pointer-events-none absolute inset-px rounded-[1.4rem] border border-white/7" />
+        <div className="flex items-center justify-between px-5 pt-4 pb-2 text-[0.7rem] text-[#A3A7A0]">
+          <span className="font-mono uppercase tracking-[0.25em]">
+            Praetorius · typescatter
+          </span>
+          <span>click inside to scroll &amp; navigate</span>
+        </div>
+        <div className="h-[70vh] w-full border-t border-white/7 bg-black">
+          <iframe
+            src={iframeSrc}
+            title="Praetorius Works Console"
+            className="h-full w-full border-0"
+          />
+        </div>
       </motion.div>
-    </div>
+    </section>
   );
 };
 
