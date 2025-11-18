@@ -1,108 +1,118 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 const ContactPage: React.FC = () => {
   return (
     <section className="space-y-8">
-      <header className="space-y-3">
-        <h1 className="text-2xl md:text-3xl">Contact</h1>
-        <p className="max-w-xl text-xs leading-relaxed text-[#A3A7A0]">
-          For commissions, collaborations, and scores, please reach out by
-          email. For institutional or press inquiries, include your affiliation
-          in the subject line.
+      <header className="space-y-2 max-w-xl">
+        <h2>Contact</h2>
+        <p className="text-[0.9rem] text-[color:var(--fg-muted)]">
+          For performances, commissions, collaborations, and teaching
+          invitations.
         </p>
       </header>
 
-      <div className="grid gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
+      <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-start">
         {/* Left: direct info */}
-        <div className="space-y-5 text-sm text-[#D5D8CE]">
+        <div className="space-y-4 text-[0.9rem] text-[color:var(--fg-soft)]">
           <div>
-            <div className="text-[0.7rem] font-mono uppercase tracking-[0.25em] text-[#A3A7A0]">
+            <div className="font-mono uppercase tracking-[0.2em] text-[color:var(--fg-muted)]">
               Email
             </div>
             <a
-              href="mailto:info@example.com"
-              className="text-sm underline decoration-[#879B4A]/50 underline-offset-4 hover:text-[#F4F5ED]"
+              href="mailto:info@pkyorke.com"
+              className="text-[0.95rem] underline-offset-4"
             >
-              info@example.com
+              info@pkyorke.com
             </a>
           </div>
 
           <div>
-            <div className="mb-1 text-[0.7rem] font-mono uppercase tracking-[0.25em] text-[#A3A7A0]">
-              Links
+            <div className="font-mono uppercase tracking-[0.2em] text-[color:var(--fg-muted)]">
+              Social
             </div>
-            <ul className="space-y-1 text-[0.8rem]">
+            <ul className="space-y-1">
+              {/* ⬇️ Replace with real handles/links */}
               <li>
-                <a
-                  href="#"
-                  className="underline decoration-[#879B4A]/40 underline-offset-4"
-                >
-                  Scores &amp; recordings
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="underline decoration-[#879B4A]/40 underline-offset-4"
-                >
-                  Institutional profile
+                <a href="https://example.com" target="_blank" rel="noreferrer">
+                  Platform / @handle
                 </a>
               </li>
             </ul>
           </div>
+
+          <p className="text-[0.85rem] text-[color:var(--fg-muted)]">
+            Please include a short description of your project, timeline, and
+            location when reaching out.
+          </p>
         </div>
 
-        {/* Right: simple form shell */}
-        <div className="rounded-2xl border border-white/7 bg-[#0C1010]/85 p-5">
-          <form
-            className="space-y-4 text-xs"
-            onSubmit={(e) => {
-              e.preventDefault();
-              // You can wire this to a backend or form service later.
-            }}
-          >
-            <div className="grid gap-4 sm:grid-cols-2">
-              <label className="space-y-1">
-                <span className="block text-[0.7rem] uppercase tracking-[0.2em] text-[#A3A7A0]">
+        {/* Right: glass contact card */}
+        <motion.div
+          className="glass-panel relative p-5 sm:p-6"
+          whileHover={{ y: -4, scale: 1.01 }}
+        >
+          <div className="pointer-events-none absolute inset-px rounded-[1.4rem] border border-[color:var(--glass-border-soft)]" />
+          <form className="relative z-10 space-y-4 text-[0.9rem] text-[color:var(--fg-soft)]">
+            <div className="font-mono uppercase tracking-[0.2em] text-[color:var(--fg-muted)]">
+              Send a note
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2">
+              <div className="space-y-1">
+                <label className="text-[0.8rem] text-[color:var(--fg-muted)]">
                   Name
-                </span>
+                </label>
                 <input
                   type="text"
-                  className="w-full rounded-md border border-white/10 bg-black/40 px-3 py-2 text-xs text-[#F2F3F0] outline-none ring-0 focus:border-[#879B4A]"
+                  className="w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[rgba(8,10,12,0.95)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-soft)]"
                 />
-              </label>
-              <label className="space-y-1">
-                <span className="block text-[0.7rem] uppercase tracking-[0.2em] text-[#A3A7A0]">
+              </div>
+              <div className="space-y-1">
+                <label className="text-[0.8rem] text-[color:var(--fg-muted)]">
                   Email
-                </span>
+                </label>
                 <input
                   type="email"
-                  className="w-full rounded-md border border-white/10 bg-black/40 px-3 py-2 text-xs text-[#F2F3F0] outline-none ring-0 focus:border-[#879B4A]"
+                  className="w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[rgba(8,10,12,0.95)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-soft)]"
                 />
-              </label>
+              </div>
             </div>
-            <label className="space-y-1 block">
-              <span className="block text-[0.7rem] uppercase tracking-[0.2em] text-[#A3A7A0]">
-                Message
-              </span>
-              <textarea
-                rows={5}
-                className="w-full rounded-md border border-white/10 bg-black/40 px-3 py-2 text-xs text-[#F2F3F0] outline-none ring-0 focus:border-[#879B4A]"
-              />
-            </label>
 
-            <button
+            <div className="space-y-1">
+              <label className="text-[0.8rem] text-[color:var(--fg-muted)]">
+                Subject
+              </label>
+              <input
+                type="text"
+                className="w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[rgba(8,10,12,0.95)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-soft)]"
+              />
+            </div>
+
+            <div className="space-y-1">
+              <label className="text-[0.8rem] text-[color:var(--fg-muted)]">
+                Message
+              </label>
+              <textarea
+                rows={4}
+                className="w-full resize-none rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[rgba(8,10,12,0.95)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-soft)]"
+              />
+            </div>
+
+            <motion.button
               type="submit"
-              className="mt-2 inline-flex items-center rounded-full px-5 py-2 text-[0.7rem] font-mono uppercase tracking-[0.18em] text-[#050607]"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              className="inline-flex items-center rounded-full px-5 py-2 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-invert)]"
               style={{
                 backgroundImage:
-                  "linear-gradient(120deg,#B3C685,#6F8240)",
+                  "linear-gradient(120deg,var(--accent-soft),var(--accent-deep))",
               }}
             >
-              Send (placeholder)
-            </button>
+              Send
+            </motion.button>
           </form>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
