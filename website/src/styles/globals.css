@@ -1,61 +1,76 @@
 @import "tailwindcss";
 
-/* 
-  Design tokens — olive, dark, typographic
-  -------------------------------------------------- */
+/* Professional sans + serif (UI + long-form copy) */
+@import url("[https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap](https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap)");
+
+/*
+Design tokens — olive, dark, typographic
+-------------------------------------------------- */
 
 :root {
-  /* Fonts */
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-    "Inter", "Segoe UI", sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
+/* Fonts */
+--font-sans: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont,
+"SF Pro Text", "Inter", "Segoe UI", sans-serif;
+--font-serif: "Spectral", Georgia, "Times New Roman", serif;
+--font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+"Liberation Mono", "Courier New", monospace;
 
-  /* Background & text */
-  --color-bg-root: #050607;
-  --color-bg-elevated: #0c1010;
-  --color-text-primary: #f2f3f0;
-  --color-text-muted: #a3a7a0;
-  --color-border-subtle: rgba(255, 255, 255, 0.06);
+/* Background & text */
+--color-bg-root: #050607;
+--color-bg-elevated: #0c1010;
+--color-text-primary: #f2f3f0;
+--color-text-muted: #a3a7a0;
+--color-border-subtle: rgba(255, 255, 255, 0.06);
 
-  /* Olive scale */
-  --olive-50: #f4f5ed;
-  --olive-100: #e2e7c8;
-  --olive-300: #b3c685;
-  --olive-500: #879b4a;
-  --olive-700: #5c6d34;
-  --olive-900: #323a1e;
+/* Olive scale */
+--olive-50: #f4f5ed;
+--olive-100: #e2e7c8;
+--olive-300: #b3c685;
+--olive-500: #879b4a;
+--olive-700: #5c6d34;
+--olive-900: #323a1e;
 
-  /* Accent gradient */
-  --gradient-accent: linear-gradient(120deg, #b3c685, #6f8240);
+/* Accent gradient */
+--gradient-accent: linear-gradient(120deg, #b3c685, #6f8240);
 
-  color-scheme: dark;
+/* Secondary accent (used sparingly) */
+--color-accent-secondary: #808ca0;
+
+color-scheme: dark;
 }
 
-/* 
-  Layout reset & base
-  -------------------------------------------------- */
+/*
+Layout reset & body
+-------------------------------------------------- */
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+box-sizing: border-box;
 }
 
 html,
 body,
 #root {
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
+margin: 0;
+padding: 0;
+min-height: 100%;
 }
 
 body {
-  background-color: var(--color-bg-root);
-  color: var(--color-text-primary);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+background-color: var(--color-bg-root);
+/* Liquid / radial gradient field */
+background:
+radial-gradient(circle at 0% 0%, rgba(179, 198, 133, 0.14) 0, transparent 55%),
+radial-gradient(circle at 100% 100%, rgba(50, 58, 30, 0.85) 0, transparent 55%),
+linear-gradient(160deg, #050607 0%, #050607 40%, #060908 100%);
+background-attachment: fixed;
+color: var(--color-text-primary);
+font-family: var(--font-sans);
+font-size: 15px;
+line-height: 1.5;
+-webkit-font-smoothing: antialiased;
+text-rendering: optimizeLegibility;
 }
 
 img,
@@ -63,13 +78,13 @@ picture,
 video,
 canvas,
 svg {
-  max-width: 100%;
-  display: block;
+max-width: 100%;
+display: block;
 }
 
-/* 
-  Typography defaults
-  -------------------------------------------------- */
+/*
+Typography — balanced sans + serif
+-------------------------------------------------- */
 
 h1,
 h2,
@@ -77,94 +92,229 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 500;
-  letter-spacing: 0.01em;
+font-family: var(--font-sans);
+font-weight: 500;
+letter-spacing: 0.02em;
+margin: 0;
+}
+
+/* Body copy (about / press) defaults to serif for a book-like feel */
+main p,
+main li {
+font-family: var(--font-serif);
 }
 
 p {
-  margin: 0;
+margin: 0;
 }
 
+/* Display-like heading tuning */
+h1 {
+letter-spacing: 0.03em;
+}
+
+h2,
+h3 {
+letter-spacing: 0.02em;
+}
+
+/* Links */
+
 a {
-  color: inherit;
-  text-decoration-color: rgba(135, 155, 74, 0.6);
-  text-underline-offset: 3px;
+color: inherit;
+text-decoration-line: underline;
+text-decoration-thickness: 1px;
+text-decoration-color: rgba(135, 155, 74, 0.4);
+text-underline-offset: 3px;
 }
 
 a:hover {
-  text-decoration-color: rgba(179, 198, 133, 1);
+text-decoration-color: rgba(179, 198, 133, 0.9);
 }
 
 /* Mono / meta text helper */
 .font-mono {
-  font-family: var(--font-mono);
+font-family: var(--font-mono);
 }
 
-/* 
-  Scrollbars (subtle, on desktop only)
-  -------------------------------------------------- */
+/* Selection */
+
+::selection {
+background: rgba(179, 198, 133, 0.35);
+color: #050607;
+}
+
+/* Focus rings */
+
+:focus-visible {
+outline: 2px solid rgba(179, 198, 133, 0.85);
+outline-offset: 3px;
+}
+
+/*
+Tailwind base refinements
+-------------------------------------------------- */
+
+@layer base {
+/* Ensure headings & text scale nicely on large viewports */
+h1 {
+font-size: clamp(2.25rem, 3.2vw, 3.5rem);
+}
+
+h2 {
+font-size: clamp(1.6rem, 2.2vw, 2.4rem);
+}
+
+h3 {
+font-size: clamp(1.3rem, 1.8vw, 1.7rem);
+}
+
+/* Lists */
+ul,
+ol {
+padding-left: 1.2rem;
+}
+
+/* Buttons (fallback where Tailwind isn't explicit) */
+button {
+font-family: var(--font-sans);
+}
+}
+
+/*
+Scrollbars (subtle, on desktop only)
+-------------------------------------------------- */
 
 @media (pointer: fine) {
-  ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 999px;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.12);
-  }
+::-webkit-scrollbar {
+width: 8px;
+height: 8px;
 }
 
-/* 
-  Utility helpers for “glass” look (optional, used by tailwind via arbitrary classes)
-  -------------------------------------------------- */
+::-webkit-scrollbar-track {
+background: transparent;
+}
 
+::-webkit-scrollbar-thumb {
+background: rgba(255, 255, 255, 0.06);
+border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: rgba(255, 255, 255, 0.12);
+}
+}
+
+/*
+Glass / liquid components
+-------------------------------------------------- */
+
+/* Core glass panel used across cards & frames */
 .glass-panel {
-  background-color: color-mix(
-    in srgb,
-    var(--color-bg-elevated) 88%,
-    rgba(255, 255, 255, 0.08)
-  );
-  backdrop-filter: blur(18px);
-  border-radius: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.75);
+position: relative;
+background-color: color-mix(
+in srgb,
+var(--color-bg-elevated) 78%,
+rgba(179, 198, 133, 0.18)
+);
+backdrop-filter: blur(22px) saturate(130%);
+border-radius: 1.6rem;
+border: 1px solid rgba(228, 235, 208, 0.14);
+box-shadow:
+0 32px 80px rgba(0, 0, 0, 0.95),
+0 0 0 1px rgba(0, 0, 0, 0.5) inset;
+overflow: hidden;
 }
 
-/* 
-  Code / pre blocks — tame any leftover Vite scaffolding
-  -------------------------------------------------- */
+/* Soft highlight + specular reflections */
+.glass-panel::before {
+content: "";
+position: absolute;
+inset: 0;
+background:
+radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.12), transparent 60%),
+radial-gradient(circle at 100% 100%, rgba(179, 198, 133, 0.14), transparent 55%);
+mix-blend-mode: soft-light;
+opacity: 0.7;
+pointer-events: none;
+}
+
+/* Very slow shifting glow for mesmerising effect */
+@media (prefers-reduced-motion: no-preference) {
+.glass-panel::after {
+content: "";
+position: absolute;
+inset: -40%;
+background: radial-gradient(
+circle at 50% 0%,
+rgba(179, 198, 133, 0.23),
+transparent 58%
+);
+opacity: 0;
+transform: translate3d(0, 0, 0);
+animation: glassPulse 20s ease-in-out infinite alternate;
+mix-blend-mode: screen;
+pointer-events: none;
+}
+
+@keyframes glassPulse {
+0% {
+opacity: 0.08;
+transform: translate3d(-10%, 6%, 0) scale(1);
+}
+50% {
+opacity: 0.2;
+transform: translate3d(10%, -4%, 0) scale(1.05);
+}
+100% {
+opacity: 0.12;
+transform: translate3d(0%, 4%, 0) scale(1.03);
+}
+}
+}
+
+/* Subtle nav / pill helpers if needed */
+.nav-glass {
+backdrop-filter: blur(18px);
+background-color: rgba(12, 16, 16, 0.92);
+border-radius: 999px;
+border: 1px solid rgba(255, 255, 255, 0.12);
+box-shadow: 0 18px 60px rgba(0, 0, 0, 0.9);
+}
+
+/*
+Code / pre blocks — tame any leftover "code vomit"
+-------------------------------------------------- */
 
 code,
 pre {
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
+font-family: var(--font-mono);
+font-size: 0.8rem;
 }
 
 pre {
-  padding: 1rem;
-  border-radius: 0.75rem;
-  background: #060809;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  overflow: auto;
+padding: 1rem 1.1rem;
+border-radius: 0.9rem;
+background: #060809;
+border: 1px solid rgba(255, 255, 255, 0.12);
+overflow: auto;
+box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
 }
 
-/* 
-  Root container helper — matches AppShell max-width & centering
-  (Tailwind does most of the work; this just keeps any raw content from being ugly)
-  -------------------------------------------------- */
+/* Inline code */
+code {
+padding: 0.1em 0.35em;
+border-radius: 0.4rem;
+background: rgba(12, 16, 16, 0.9);
+border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/*
+Root container helper — matches AppShell max-width & centering
+-------------------------------------------------- */
 
 .root-shell {
-  max-width: 80rem;
-  margin-inline: auto;
-  padding-inline: 1rem;
+max-width: 80rem;
+margin-inline: auto;
+padding-inline: 1rem;
 }
