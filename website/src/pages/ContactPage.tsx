@@ -29,10 +29,10 @@ const ContactPage: React.FC = () => {
               Email
             </div>
             <a
-              href="mailto:info@pkyorke.com"
+              href="mailto:pkyorke@gmail.com"
               className="text-[0.95rem] underline-offset-4"
             >
-              info@pkyorke.com
+              pkyorke@gmail.com
             </a>
           </div>
 
@@ -43,8 +43,8 @@ const ContactPage: React.FC = () => {
             <ul className="space-y-1">
               {/* ⬇️ Replace with real handles/links */}
               <li>
-                <a href="https://example.com" target="_blank" rel="noreferrer">
-                  Platform / @handle
+                <a href="https://instagram.com/paukenpaul" target="_blank" rel="noreferrer">
+                  Instagram / @paukenpaul
                 </a>
               </li>
             </ul>
