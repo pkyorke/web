@@ -1,0 +1,1 @@
+P. K. Yorke is a composer and sound artist working with instruments, loudspeakers, and architectures. Their work treats rooms as collaborators, tracing how spaces hold and reshape memory through sound, performance, and installation.
