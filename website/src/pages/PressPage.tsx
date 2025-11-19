@@ -2,17 +2,6 @@ import React, { useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
 export type BioId = "short" | "medium" | "long";
-const [activeBioId, setActiveBioId] = useState<BioId>("short");
-const [lightboxImage, setLightboxImage] = useState<PressImage | null>(null);
-const [copiedBio, setCopiedBio] = useState(false);
-const shouldReduceMotion = useReducedMotion();
-const handleCopyBioClick = async () => {
-  const ok = await copyBioToClipboard(activeBio.preview);
-  if (ok) {
-    setCopiedBio(true);
-    window.setTimeout(() => setCopiedBio(false), 1600);
-  }
-};
 
 interface BioDescriptor {
   id: BioId;
@@ -132,12 +121,21 @@ async function copyBioToClipboard(text: string): Promise<boolean> {
 const PressPage: React.FC = () => {
   const [activeBioId, setActiveBioId] = useState<BioId>("short");
   const [lightboxImage, setLightboxImage] = useState<PressImage | null>(null);
+  const [copiedBio, setCopiedBio] = useState(false);
   const shouldReduceMotion = useReducedMotion();
 
   const activeBio = useMemo(
     () => bios.find((b) => b.id === activeBioId) ?? bios[0],
     [activeBioId]
   );
+
+  const handleCopyBioClick = async () => {
+    const ok = await copyBioToClipboard(activeBio.preview);
+    if (ok) {
+      setCopiedBio(true);
+      window.setTimeout(() => setCopiedBio(false), 1600);
+    }
+  };
 
   const bioMotion = shouldReduceMotion
     ? { opacity: 1, scale: 1, y: 0 }
