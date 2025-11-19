@@ -22,7 +22,7 @@ const WorksPage: React.FC = () => {
         whileHover={{ y: -4, scale: 1.01 }}
       >
         {/* Inner border */}
-        <div className="pointer-events-none absolute inset-px rounded-[1.4rem] border border-[color:var(--glass-border-soft)]" />
+        <div className="pointer-events-none absolute inset-px rounded-[0.5rem] border border-[color:var(--glass-border-soft)]" />
 
         {/* Top meta bar */}
         <div className="relative z-10 flex items-center justify-between border-b border-[color:var(--line-subtle)] px-4 py-3 text-[0.7rem] font-mono uppercase tracking-[0.2em] text-[color:var(--fg-muted)]">
