@@ -84,20 +84,20 @@ const AboutPage: React.FC = () => {
                 Selected roles
               </div>
               <ul className="space-y-1">
-                <li>[20XX– ] · AV Assistant, CalArts School of Theater</li>
+                <li>[2024– ] · AV Assistant, CalArts School of Theater</li>
                 <li>
-                  [20XX– ] · Sound designer, CalArts School of Theater
+                  [2024– ] · Sound designer, CalArts School of Theater
                   (productions including <em>TERAS</em>;{" "}
                   <em>The Misanthrope</em> by Cora Badey; new work TBA)
                 </li>
-                <li>[20XX–20XX] · Instructor, Jazz Hands for Autism</li>
+                <li>[2024–] · Instructor, Jazz Hands for Autism</li>
                 <li>
-                  [20XX–20XX] · Percussion Director, Florida Symphony Youth
+                  [2022–2024] · Percussion Director, Florida Symphony Youth
                   Orchestras (FSYO)
                 </li>
-                <li>[20XX–20XX] · MM in Music, California Institute of the Arts</li>
+                <li>[2024–] · MM in Music, California Institute of the Arts</li>
                 <li>
-                  [20XX–20XX] · BM in Percussion Performance, University of
+                  [2016–2020] · BM in Percussion Performance, University of
                   Central Florida
                 </li>
               </ul>
