@@ -52,7 +52,7 @@ const ContactPage: React.FC = () => {
           className="glass-panel relative p-5 sm:p-6"
           whileHover={{ y: -4, scale: 1.01 }}
         >
-          <div className="pointer-events-none absolute inset-px rounded-[1.4rem] border border-[color:var(--glass-border-soft)]" />
+          <div className="pointer-events-none absolute inset-px rounded-[0.5rem] border border-[color:var(--glass-border-soft)]" />
           <form className="relative z-10 space-y-4 text-[0.9rem] text-[color:var(--fg-soft)]">
             <div className="font-mono uppercase tracking-[0.2em] text-[color:var(--fg-muted)]">
               Send a note
