@@ -103,7 +103,7 @@ const ContactPage: React.FC = () => {
               type="submit"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center rounded-full px-5 py-2 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-invert)]"
+              className="inline-flex items-center rounded-lg px-5 py-2 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-invert)]"
               style={{
                 backgroundImage:
                   "linear-gradient(120deg,var(--accent-soft),var(--accent-deep))",
