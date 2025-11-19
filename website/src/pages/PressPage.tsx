@@ -93,7 +93,7 @@ const PressPage: React.FC = () => {
               className="glass-panel relative p-4"
               whileHover={{ y: -4, scale: 1.01 }}
             >
-              <div className="pointer-events-none absolute inset-px rounded-[1.4rem] border border-[color:var(--glass-border-soft)]" />
+              <div className="pointer-events-none absolute inset-px rounded-[0.5rem] border border-[color:var(--glass-border-soft)]" />
               <div className="relative z-10 space-y-3 text-[0.85rem] text-[color:var(--fg-soft)]">
                 {/* Placeholder media block */}
                 <div className="h-32 rounded-[1rem] border border-[color:var(--line-subtle)] bg-[radial-gradient(circle_at_0%_0%,rgba(55,224,215,0.22),transparent_55%),radial-gradient(circle_at_100%_100%,rgba(148,163,254,0.25),transparent_55%),linear-gradient(135deg,#020617,#020617)]" />
