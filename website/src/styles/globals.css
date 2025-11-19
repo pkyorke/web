@@ -74,7 +74,7 @@
   --line-subtle: rgba(15, 23, 42, 0.11);
   --line-strong: rgba(15, 23, 42, 0.2);
 
-  /* Light theme: amber as primary accent, cyan as secondary */
+   /* Light theme: amber is primary accent, cyan secondary */
   --accent-core: #e29a3a;
   --accent-soft: #ffc15a;
   --accent-deep: #b2661c;
