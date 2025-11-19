@@ -94,24 +94,15 @@ const HomePage: React.FC = () => {
 
         {/* Right: giant glass pane */}
         <motion.div
-          className="glass-panel hero-pane relative flex h-[60vh] min-h-[320px] flex-col justify-between overflow-hidden p-5 md:p-7"
+          className="glass-panel hero-pane relative flex h-[60vh] min-h-[320px] overflow-hidden p-2 md:p-3"
           whileHover={{ y: -4, scale: 1.01 }}
         >
           {/* Inner border */}
-          <div className="pointer-events-none absolute inset-px rounded-[2rem] border border-[color:var(--glass-border-soft)]" />
-
-          {/* Top meta strip */}
-          <div className="relative z-10 flex items-center justify-between text-[0.7rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-muted)]">
-            <span>current work</span>
-            <span className="flex items-center gap-2">
-              <span className="h-1 w-4 rounded-lg bg-[color:var(--accent-soft)]" />
-              2026
-            </span>
-          </div>
-
-          {/* Middle visual field (abstract “installation”) */}
-          <div className="relative z-10 mt-6 flex flex-1 items-center justify-center">
-            <div className="relative h-full w-full max-h-64 rounded-lg border border-[color:var(--line-subtle)] overflow-hidden bg-[color:var(--bg-2)]">
+          <div className="pointer-events-none absolute inset-px rounded-[0.5rem] border border-[color:var(--glass-border-soft)]" />
+        
+          {/* Portrait */}
+          <div className="relative z-10 h-full w-full">
+            <div className="relative h-full w-full overflow-hidden rounded-[0.5rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)]">
               <img
                 src="https://cdn.jsdelivr.net/gh/pkyorke/web/website/paul.jpg"
                 alt="Portrait of P. K. Yorke"
@@ -119,33 +110,12 @@ const HomePage: React.FC = () => {
               />
             </div>
           </div>
-
-
-          {/* Bottom metadata footer */}
-          <div className="relative z-10 mt-6 flex flex-wrap items-center justify-between gap-3 text-[0.75rem] text-[color:var(--fg-soft)]">
-            <div className="space-y-1">
-              <div className="font-mono uppercase tracking-[0.18em] text-[color:var(--fg-muted)]">
-                title
-              </div>
-              <div className="font-serif text-[0.9rem] italic">
-                [installation / score title here]
-              </div>
-            </div>
-            <div className="flex flex-wrap gap-2 text-[0.7rem]">
-              <span className="rounded-lg border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-1 font-mono uppercase tracking-[0.18em]">
-                installation
-              </span>
-              <span className="rounded-lg border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-1 font-mono uppercase tracking-[0.18em]">
-                electronics
-              </span>
-            </div>
-          </div>
         </motion.div>
       </div>
 
       {/* Lower band: single strip, not 3 separate cards */}
       <div className="glass-panel relative mt-2 px-5 py-4 md:px-6 md:py-5">
-        <div className="pointer-events-none absolute inset-px rounded-[1.4rem] border border-[color:var(--glass-border-soft)]" />
+        <div className="pointer-events-none absolute inset-px rounded-[0.5rem] border border-[color:var(--glass-border-soft)]" />
         <div className="relative z-10 grid gap-5 text-[0.75rem] text-[color:var(--fg-soft)] md:grid-cols-3">
           <div className="space-y-2">
             <div className="font-mono uppercase tracking-[0.22em] text-[color:var(--fg-muted)]">
