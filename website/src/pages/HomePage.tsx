@@ -134,9 +134,9 @@ const HomePage: React.FC = () => {
               Selected works
             </div>
             <ul className="space-y-1">
-              <li>Title 1 — ensemble · 12′</li>
-              <li>Title 2 — installation · variable</li>
-              <li>Title 3 — solo + electronics · 9′</li>
+              <li>Mirrors in a Black Room — fixed media · 4′</li>
+              <li>Dusty Mind — electroacoustic multi-percussion · variable</li>
+              <li>TERAΣ — sound design · 90′</li>
             </ul>
           </div>
           <div className="space-y-2">
@@ -144,19 +144,19 @@ const HomePage: React.FC = () => {
               Upcoming
             </div>
             <ul className="space-y-1">
-              <li>MM/DD — venue / city</li>
-              <li>MM/DD — festival / series</li>
-              <li>MM/DD — residency</li>
+              <li>12/07 — CalArts ROD / los angeles</li>
+              <li>03/31 — CalArts Wild Beast / los angeles</li>
+              <li>03/31 — CalArts Wild Beast / los angeles</li>
             </ul>
           </div>
           <div className="space-y-2">
             <div className="font-mono uppercase tracking-[0.22em] text-[color:var(--fg-muted)]">
-              Tools &amp; research
+              Current Focus
             </div>
             <ul className="space-y-1">
-              <li>Praetorius · interactive works console</li>
-              <li>Custom software instruments</li>
-              <li>Field recording / spatial studies</li>
+              <li>Ewe Drum and Dance · Atsiagbekor</li>
+              <li>Percussion Performance</li>
+              <li>Sound Design</li>
             </ul>
           </div>
         </div>
