@@ -97,7 +97,7 @@ const AppShell: React.FC = () => {
                       }}
                     />
                   )}
-                    <span className="relative z-10 mix-blend-screen">
+                    <span className="relative z-10">
                       {item.label}
                     </span>
                   </span>
