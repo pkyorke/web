@@ -438,3 +438,9 @@ code {
 :root[data-theme="light"] .contact-field:focus {
   border-color: var(--accent-ember);
 }
+
+/* Primary CTA link: no default underline, we draw our own */
+.cta-primary {
+  text-decoration: none;
+  text-decoration-color: transparent;
+}
