@@ -65,7 +65,7 @@ const ContactPage: React.FC = () => {
                 </label>
                 <input
                   type="text"
-                  className="w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-ember)]"
+                  className="contact-field w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none"
                 />
               </div>
               <div className="space-y-1">
@@ -74,7 +74,7 @@ const ContactPage: React.FC = () => {
                 </label>
                 <input
                   type="email"
-                  className="w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-ember)]"
+                  className="contact-field w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none"
                 />
               </div>
             </div>
@@ -85,7 +85,7 @@ const ContactPage: React.FC = () => {
               </label>
               <input
                 type="text"
-                className="w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-ember)]"
+                className="contact-field w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none"
               />
             </div>
 
@@ -95,7 +95,7 @@ const ContactPage: React.FC = () => {
               </label>
               <textarea
                 rows={4}
-                className="w-full resize-none rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-ember)]"
+                className="contact-field w-full resize-none rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none"
               />
             </div>
 
