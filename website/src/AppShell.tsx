@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 const navItems = [
   { to: "/", label: "Home" },
@@ -109,26 +110,19 @@ const AppShell: React.FC = () => {
             <button
               type="button"
               onClick={toggleTheme}
-              className="relative ml-1 flex h-7 w-10 items-center rounded-lg border border-[color:var(--glass-border-soft)] bg-[color:var(--bg-2)] px-1 text-[0.6rem] text-[color:var(--fg-muted)] outline-none"
+              className="relative ml-2 flex h-8 w-20 items-center justify-between rounded-lg border border-[color:var(--glass-border-soft)] bg-[color:var(--bg-2)] px-2 text-[0.7rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-muted)] outline-none"
             >
-              <motion.div
-                layout
-                className="flex h-5 w-5 items-center justify-center rounded-lg"
-                style={{
-                  background:
-                    theme === "dark"
-                      ? "radial-gradient(circle at 30% 20%, #facc15, transparent 60%), radial-gradient(circle at 70% 80%, #fb923c, transparent 60%)"
-                      : "radial-gradient(circle at 30% 20%, #38bdf8, transparent 60%), radial-gradient(circle at 70% 80%, #a5b4fc, transparent 60%)",
-                }}
-                transition={{ type: "spring", stiffness: 400, damping: 30 }}
+              {/* Sliding knob */}
+              <motion.span
+                className="absolute top-1 left-1 h-6 w-9 rounded-md bg-[color:var(--bg-3)] shadow-sm"
                 animate={{
-                  x: theme === "dark" ? 0 : 16,
+                  x: theme === "dark" ? 36 : 0, // slide right in dark mode
                 }}
-              >
-                <span className="text-[0.7rem] leading-none">
-                  {theme === "dark" ? "◐" : "☼"}
-                </span>
-              </motion.div>
+                transition={{ type: "spring", stiffness: 380, damping: 28 }}
+              />
+              {/* Labels */}
+              <span className="relative z-10 flex-1 text-center">☀︎</span>
+              <span className="relative z-10 flex-1 text-center">☾</span>
             </button>
           </nav>
         </header>
