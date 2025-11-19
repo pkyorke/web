@@ -111,11 +111,15 @@ const HomePage: React.FC = () => {
 
           {/* Middle visual field (abstract “installation”) */}
           <div className="relative z-10 mt-6 flex flex-1 items-center justify-center">
-            <div className="relative h-full w-full max-h-64 rounded-[1.4rem] border border-[color:var(--line-subtle)] bg-[radial-gradient(circle_at_0%_0%,rgba(55,224,215,0.24),transparent_55%),radial-gradient(circle_at_100%_100%,rgba(255,193,90,0.2),transparent_55%),linear-gradient(135deg,#020617,#020617)] overflow-hidden">
-              <div className="absolute inset-0 opacity-70 mix-blend-screen bg-[radial-gradient(circle_at_30%_20%,rgba(55,224,215,0.35),transparent_60%),radial-gradient(circle_at_80%_80%,rgba(148,163,254,0.25),transparent_60%)]" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(15,23,42,0.7),transparent_60%)]" />
+            <div className="relative h-full w-full max-h-64 rounded-lg border border-[color:var(--line-subtle)] overflow-hidden bg-[color:var(--bg-2)]">
+              <img
+                src="https://cdn.jsdelivr.net/gh/pkyorke/web/website/paul.jpg"
+                alt="Portrait of P. K. Yorke"
+                className="h-full w-full object-cover"
+              />
             </div>
           </div>
+
 
           {/* Bottom metadata footer */}
           <div className="relative z-10 mt-6 flex flex-wrap items-center justify-between gap-3 text-[0.75rem] text-[color:var(--fg-soft)]">
