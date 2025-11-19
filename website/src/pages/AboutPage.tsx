@@ -50,7 +50,7 @@ const AboutPage: React.FC = () => {
             className="glass-panel relative p-4 sm:p-5"
             whileHover={{ y: -4, scale: 1.01 }}
           >
-            <div className="pointer-events-none absolute inset-px rounded-[1.4rem] border border-[color:var(--glass-border-soft)]" />
+            <div className="pointer-events-none absolute inset-px rounded-[0.5rem] border border-[color:var(--glass-border-soft)]" />
             <div className="relative z-10 space-y-2 text-[0.85rem] text-[color:var(--fg-soft)]">
               <div className="font-mono uppercase tracking-[0.22em] text-[color:var(--fg-muted)]">
                 Snapshot
@@ -70,7 +70,7 @@ const AboutPage: React.FC = () => {
             className="glass-panel relative p-4 sm:p-5"
             whileHover={{ y: -4, scale: 1.01 }}
           >
-            <div className="pointer-events-none absolute inset-px rounded-[1.4rem] border border-[color:var(--glass-border-soft)]" />
+            <div className="pointer-events-none absolute inset-px rounded-[0.5rem] border border-[color:var(--glass-border-soft)]" />
             <div className="relative z-10 space-y-2 text-[0.8rem] text-[color:var(--fg-soft)]">
               <div className="font-mono uppercase tracking-[0.22em] text-[color:var(--fg-muted)]">
                 Selected roles
