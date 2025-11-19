@@ -52,7 +52,7 @@ const PressPage: React.FC = () => {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 className={[
-                  "relative flex items-center rounded-full px-4 py-1.5 font-mono uppercase tracking-[0.18em]",
+                  "relative flex items-center rounded-lg px-4 py-1.5 font-mono uppercase tracking-[0.18em]",
                   active
                     ? "text-[color:var(--fg-invert)]"
                     : "text-[color:var(--fg-soft)]",
