@@ -15,6 +15,16 @@
           "t": 0
         }
       ]
+    },
+    {
+      "id": 2,
+      "slug": "morontodun",
+      "title": "morontodun",
+      "oneliner": "play based on the ancient myth of Moremi",
+      "description": "This classic from renowned Nigerian playwright, Femi Osofisan, follows Titubi as she is challenged by the government to infiltrate the Abegkoya peasant revolt. Titubi is forced to confront her privilege, responsibility, and spiritual connection to Moremi- the Yoruba folklore heroine. Double agency, class conflict, and mythological forces intertwine blurring the lines between enemy and ally. Song and dance interact to demonstrate the dire necessity of women in nation building, and Titubi returns changed and triumphant.",
+      "audio": null,
+      "pdf": null,
+      "cues": []
     }
   ]
 }
