@@ -103,7 +103,7 @@ const PressPage: React.FC = () => {
                     <span className="font-mono uppercase tracking-[0.18em] text-[color:var(--fg-muted)]">
                       {item.outlet}
                     </span>
-                    <span className="rounded-full border border-[color:var(--line-subtle)] bg-[rgba(8,10,12,0.95)] px-2 py-0.5 text-[0.7rem] font-mono uppercase tracking-[0.18em]">
+                    <span className="rounded-lg border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-2 py-0.5 text-[0.7rem] font-mono uppercase tracking-[0.18em]">
                       {item.year}
                     </span>
                   </div>
