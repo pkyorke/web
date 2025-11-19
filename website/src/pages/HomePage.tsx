@@ -52,7 +52,7 @@ const HomePage: React.FC = () => {
                     animate={{ y: "0%", opacity: 1 }}
                     exit={{ y: "-100%", opacity: 0 }}
                     transition={{ duration: 0.55, ease: [0.22, 0.61, 0.36, 1] }}
-                    className="inline-flex items-center rounded-full bg-[color:var(--bg-2)] px-3 py-0.5 text-[0.7rem] font-mono uppercase tracking-[0.2em] text-[color:var(--accent-soft)] border border-[color:var(--line-subtle)]"
+                    className="inline-flex items-center rounded-lg bg-[color:var(--bg-2)] px-3 py-0.5 text-[0.7rem] font-mono uppercase tracking-[0.2em] text-[color:var(--accent-soft)] border border-[color:var(--line-subtle)]"
                   >
                     {roles[roleIndex]}
                   </motion.span>
@@ -72,7 +72,7 @@ const HomePage: React.FC = () => {
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
               <Link
                 to="/works"
-                className="inline-flex items-center rounded-full px-5 py-2 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-invert)]"
+                className="inline-flex items-center rounded-lg px-5 py-2 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-invert)]"
                 style={{
                   backgroundImage:
                     "linear-gradient(120deg,var(--accent-soft),var(--accent-deep))",
@@ -84,7 +84,7 @@ const HomePage: React.FC = () => {
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
               <Link
                 to="/about"
-                className="inline-flex items-center rounded-full border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-5 py-2 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-soft)]"
+                className="inline-flex items-center rounded-lg border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-5 py-2 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-soft)]"
               >
                 About
               </Link>
@@ -104,7 +104,7 @@ const HomePage: React.FC = () => {
           <div className="relative z-10 flex items-center justify-between text-[0.7rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-muted)]">
             <span>current work</span>
             <span className="flex items-center gap-2">
-              <span className="h-1 w-4 rounded-full bg-[color:var(--accent-soft)]" />
+              <span className="h-1 w-4 rounded-lg bg-[color:var(--accent-soft)]" />
               2026
             </span>
           </div>
@@ -132,10 +132,10 @@ const HomePage: React.FC = () => {
               </div>
             </div>
             <div className="flex flex-wrap gap-2 text-[0.7rem]">
-              <span className="rounded-full border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-1 font-mono uppercase tracking-[0.18em]">
+              <span className="rounded-lg border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-1 font-mono uppercase tracking-[0.18em]">
                 installation
               </span>
-              <span className="rounded-full border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-1 font-mono uppercase tracking-[0.18em]">
+              <span className="rounded-lg border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-1 font-mono uppercase tracking-[0.18em]">
                 electronics
               </span>
             </div>
