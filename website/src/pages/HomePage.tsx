@@ -78,7 +78,7 @@ const HomePage: React.FC = () => {
                     "linear-gradient(120deg,var(--accent-soft),var(--accent-deep))",
                 }}
               >
-                View works
+                <span className="home-pill-underline">View works</span>
               </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
