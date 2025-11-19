@@ -155,12 +155,13 @@ const PressPage: React.FC = () => {
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <button
-                type="button"
+              <a
+                href="/press/press-kit.zip"
+                download
                 className="inline-flex items-center rounded-lg border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-4 py-2 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-soft)]"
               >
                 Download press kit (zip)
-              </button>
+              </a>
               <a
                 href="/contact"
                 className="inline-flex items-center rounded-lg px-4 py-2 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-invert)]"
