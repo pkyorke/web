@@ -1,7 +1,15 @@
 import React from "react";
-import { motion } from "framer-motion";
+import ScrollReveal from "../components/ScrollReveal";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 const AboutPage: React.FC = () => {
+  usePageMeta({
+    title: "About – P. K. Yorke",
+    description:
+      "Paul K. Yorke is a Los Angeles–based percussionist and sound artist shaping rooms with electroacoustic scores and spatial sound design.",
+    ogImage: "https://pkyorke.com/pkyorke-og-about.jpg",
+    path: "/about",
+  });
   return (
     <section className="space-y-10">
       {/* Title */}
@@ -46,9 +54,9 @@ const AboutPage: React.FC = () => {
         {/* Right: glass bio and timeline */}
         <div className="space-y-5">
           {/* Snapshot */}
-          <motion.div
+          <ScrollReveal
             className="glass-panel relative p-4 sm:p-5"
-            whileHover={{ y: -4, scale: 1.01 }}
+            parallaxStrength={5}
           >
             <div className="pointer-events-none absolute inset-px rounded-[0.5rem] border border-[color:var(--glass-border-soft)]" />
             <div className="relative z-10 space-y-2 text-[0.85rem] text-[color:var(--fg-soft)]">
@@ -63,12 +71,12 @@ const AboutPage: React.FC = () => {
                 performances and new work.
               </p>
             </div>
-          </motion.div>
+          </ScrollReveal>
 
           {/* Selected roles */}
-          <motion.div
+          <ScrollReveal
             className="glass-panel relative p-4 sm:p-5"
-            whileHover={{ y: -4, scale: 1.01 }}
+            parallaxStrength={5}
           >
             <div className="pointer-events-none absolute inset-px rounded-[0.5rem] border border-[color:var(--glass-border-soft)]" />
             <div className="relative z-10 space-y-2 text-[0.8rem] text-[color:var(--fg-soft)]">
@@ -94,7 +102,7 @@ const AboutPage: React.FC = () => {
                 </li>
               </ul>
             </div>
-          </motion.div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

@@ -10,6 +10,7 @@ import WorksPage from "./pages/WorksPage";
 import AboutPage from "./pages/AboutPage";
 import PressPage from "./pages/PressPage";
 import ContactPage from "./pages/ContactPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
       <Route path="/about" element={<AboutPage />} />
       <Route path="/press" element={<PressPage />} />
       <Route path="/contact" element={<ContactPage />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Route>
   ),
   {

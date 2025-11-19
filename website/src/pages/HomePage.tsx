@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import ScrollReveal from "../components/ScrollReveal";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 const roles = ["composer", "sound artist", "technologist"];
 
 const HomePage: React.FC = () => {
   const [roleIndex, setRoleIndex] = useState(0);
+  usePageMeta({
+    title: "P. K. Yorke – Composer & Sound Artist",
+    description:
+      "Immersive compositions for rooms, percussion, and loudspeakers: installations, scores, and software that make spaces feel alive.",
+    ogImage: "https://pkyorke.com/pkyorke-og-home.jpg",
+    path: "/",
+  });
 
   // Cycle roles every ~5 seconds
   useEffect(() => {
@@ -114,7 +123,10 @@ const HomePage: React.FC = () => {
       </div>
 
       {/* Lower band: single strip, not 3 separate cards */}
-      <div className="glass-panel relative mt-2 px-5 py-4 md:px-6 md:py-5">
+      <ScrollReveal
+        className="glass-panel relative mt-2 px-4 py-5 sm:px-5 md:px-6 md:py-5"
+        parallaxStrength={6}
+      >
         <div className="pointer-events-none absolute inset-px rounded-[0.5rem] border border-[color:var(--glass-border-soft)]" />
         <div className="relative z-10 grid gap-5 text-[0.75rem] text-[color:var(--fg-soft)] md:grid-cols-3">
           <div className="space-y-2">
@@ -148,7 +160,7 @@ const HomePage: React.FC = () => {
             </ul>
           </div>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 };

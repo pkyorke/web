@@ -1,9 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 const WorksPage: React.FC = () => {
   const iframeSrc = `${import.meta.env.BASE_URL}praetorius/index.html`;
   const [isFullscreen, setIsFullscreen] = useState(false);
+  usePageMeta({
+    title: "Works & Installations – P. K. Yorke",
+    description:
+      "Browse scores, loudspeaker works, and installations via the Praetorius console—filter by forces, duration, and year to dive deeper.",
+    ogImage: "https://pkyorke.com/pkyorke-og-works.jpg",
+    path: "/works",
+  });
 
   useEffect(() => {
     if (!isFullscreen) return;
@@ -20,6 +28,9 @@ const WorksPage: React.FC = () => {
     <section className="space-y-8">
       <header className="space-y-2 max-w-2xl">
         <h2 className="leading-tight">Works &amp; installations</h2>
+        <p className="text-[0.8rem] uppercase tracking-[0.25em] text-[color:var(--fg-muted)]">
+          Filter by forces, duration, and year; click a work to see score and audio inside the console.
+        </p>
         <p className="text-[0.9rem] text-[color:var(--fg-muted)]">
           Scores, loudspeaker pieces, and installations presented through an
           interactive console. Use the filters and detail views inside the
