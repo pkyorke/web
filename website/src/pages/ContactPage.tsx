@@ -1,9 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import ScrollReveal from "../components/ScrollReveal";
 import { usePageMeta } from "../hooks/usePageMeta";
 
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/movreadp";
+
 const ContactPage: React.FC = () => {
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setStatus("submitting");
+    setErrorMessage(null);
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: formData,
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+        try {
+          const data = await response.json();
+          if (data && data.errors && data.errors.length > 0) {
+            setErrorMessage(data.errors.map((e: { message: string }) => e.message).join(" "));
+          } else {
+            setErrorMessage("Something went wrong sending your message.");
+          }
+        } catch {
+          setErrorMessage("Something went wrong sending your message.");
+        }
+      }
+    } catch {
+      setStatus("error");
+      setErrorMessage("Network error. Please try again in a moment.");
+    }
+  };
   usePageMeta({
     title: "Contact – P. K. Yorke",
     description:
@@ -62,7 +105,11 @@ const ContactPage: React.FC = () => {
           parallaxStrength={5}
         >
           <div className="pointer-events-none absolute inset-px rounded-[0.5rem] border border-[color:var(--glass-border-soft)]" />
-          <form className="relative z-10 space-y-4 text-[0.9rem] text-[color:var(--fg-soft)]">
+          <form
+              className="relative z-10 space-y-4 text-[0.9rem] text-[color:var(--fg-soft)]"
+              onSubmit={handleSubmit}
+              method="POST"
+            >
             <div className="font-mono uppercase tracking-[0.2em] text-[color:var(--fg-muted)]">
               Send a note
             </div>
@@ -74,52 +121,57 @@ const ContactPage: React.FC = () => {
                 </label>
                 <input
                   type="text"
-                  className="contact-field w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none"
+                  name="name"
+                  required
+                  className="w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-ember)]"
                 />
-              </div>
-              <div className="space-y-1">
-                <label className="text-[0.8rem] text-[color:var(--fg-muted)]">
-                  Email
-                </label>
+                
                 <input
                   type="email"
-                  className="contact-field w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none"
+                  name="email"
+                  required
+                  className="w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-ember)]"
                 />
-              </div>
-            </div>
-
-            <div className="space-y-1">
-              <label className="text-[0.8rem] text-[color:var(--fg-muted)]">
-                Subject
-              </label>
-              <input
-                type="text"
-                className="contact-field w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none"
-              />
-            </div>
-
-            <div className="space-y-1">
-              <label className="text-[0.8rem] text-[color:var(--fg-muted)]">
-                Message
-              </label>
-              <textarea
-                rows={4}
-                className="contact-field w-full resize-none rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none"
-              />
+                
+                <input
+                  type="text"
+                  name="subject"
+                  className="w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-ember)]"
+                />
+                
+                <textarea
+                  rows={4}
+                  name="message"
+                  required
+                  className="w-full resize-none rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-ember)]"
+                />
             </div>
 
             <motion.button
               type="submit"
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center rounded-lg px-5 py-2 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-invert)]"
+              whileHover={status === "idle" ? { scale: 1.03 } : undefined}
+              whileTap={status === "idle" ? { scale: 0.97 } : undefined}
+              disabled={status === "submitting" || status === "success"}
+              className="inline-flex items-center rounded-lg px-5 py-2 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-invert)] disabled:opacity-70 disabled:cursor-not-allowed"
               style={{
                 backgroundImage:
                   "linear-gradient(120deg,var(--accent-soft),var(--accent-deep))",
               }}
             >
-              Send
+              {status === "submitting"
+                ? "Sending…"
+                : status === "success"
+                ? "Sent"
+                : "Send"}
             </motion.button>
+                        {status !== "idle" && (
+            <p className="pt-1 text-[0.8rem] text-[color:var(--fg-muted)]">
+              {status === "success" && "Thank you — your message has been sent."}
+              {status === "error" &&
+                (errorMessage ??
+                  "There was a problem sending your message. Please try again or email directly.")}
+            </p>
+          )}
           </form>
         </ScrollReveal>
       </div>
