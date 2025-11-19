@@ -25,6 +25,20 @@
       "one": "This is paul's second work.",
       "onelinerEffective": "This is paul's second work.",
       "descriptionEffective": "This is paul's second work. This is paul's second work."
+    },
+    {
+      "id": 2,
+      "slug": "morontodun",
+      "title": "morontodun",
+      "oneliner": "play based on the ancient myth of Moremi",
+      "description": "This classic from renowned Nigerian playwright, Femi Osofisan, follows Titubi as she is challenged by the government to infiltrate the Abegkoya peasant revolt. Titubi is forced to confront her privilege, responsibility, and spiritual connection to Moremi- the Yoruba folklore heroine. Double agency, class conflict, and mythological forces intertwine blurring the lines between enemy and ally. Song and dance interact to demonstrate the dire necessity of women in nation building, and Titubi returns changed and triumphant.",
+      "audio": null,
+      "pdf": null,
+      "cues": [],
+      "audioId": "wc-a2",
+      "one": "play based on the ancient myth of Moremi",
+      "onelinerEffective": "play based on the ancient myth of Moremi",
+      "descriptionEffective": "This classic from renowned Nigerian playwright, Femi Osofisan, follows Titubi as she is challenged by the government to infiltrate the Abegkoya peasant revolt. Titubi is forced to confront her privilege, responsibility, and spiritual connection to Moremi- the Yoruba folklore heroine. Double agency, class conflict, and mythological forces intertwine blurring the lines between enemy and ally. Song and dance interact to demonstrate the dire necessity of women in nation building, and Titubi returns changed and triumphant."
     }
   ],
   "pageFollowMaps": {},
@@ -33,7 +47,7 @@
     "site": {
       "firstName": "",
       "lastName": "",
-      "fullName": "",
+      "fullName": "pkyorke",
       "copyrightName": "",
       "listLabel": "Works List",
       "subtitle": "",
@@ -62,7 +76,7 @@
   },
   "source": "user",
   "seeded": false,
-  "count": 1,
+  "count": 2,
   "schemaVersion": "0.2.8",
   "warnings": []
 };
@@ -108,7 +122,7 @@
   window.PRAE.ensureAudioTags = ensureAudioTags;
   window.PRAE.config = window.PRAE.config || {};
   window.PRAE.config.theme = data.config ? data.config.theme : "dark";
-  window.PRAE.config.site  = data.config ? data.config.site  : {"firstName":"","lastName":"","fullName":"","copyrightName":"","listLabel":"Works List","subtitle":"","updated":{"mode":"auto","value":""},"links":[{"label":"Home","href":"#","external":false},{"label":"Projects","href":"#","external":false},{"label":"Contact","href":"#","external":false}]};
+  window.PRAE.config.site  = data.config ? data.config.site  : {"firstName":"","lastName":"","fullName":"pkyorke","copyrightName":"","listLabel":"Works List","subtitle":"","updated":{"mode":"auto","value":""},"links":[{"label":"Home","href":"#","external":false},{"label":"Projects","href":"#","external":false},{"label":"Contact","href":"#","external":false}]};
   window.PRAE.warnings = Array.isArray(data.warnings) ? data.warnings : [];
 
   try { ensureAudioTags(); } catch(_) {}
