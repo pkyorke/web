@@ -13,13 +13,15 @@ const navItems = [
 type Theme = "dark" | "light";
 
 const getInitialTheme = (): Theme => {
-  if (typeof window === "undefined") return "dark";
+  // SSR / build: default to light shell
+  if (typeof window === "undefined") return "light";
+
+  // Respect stored preference if present
   const stored = window.localStorage.getItem("pk-theme");
   if (stored === "dark" || stored === "light") return stored;
-  // Prefer system
-  const prefersDark = window.matchMedia?.("(prefers-color-scheme: dark)")
-    .matches;
-  return prefersDark ? "dark" : "dark";
+
+  // First visit, no stored preference → default to light
+  return "light";
 };
 
 const AppShell: React.FC = () => {
