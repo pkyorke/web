@@ -1,7 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
+import ScrollReveal from "../components/ScrollReveal";
+import { usePageMeta } from "../hooks/usePageMeta";
 
 const ContactPage: React.FC = () => {
+  usePageMeta({
+    title: "Contact – P. K. Yorke",
+    description:
+      "Invite performances, commissions, residencies, or teaching collaborations—reach out with project details, timelines, and locations.",
+    ogImage: "https://pkyorke.com/pkyorke-og-contact.jpg",
+    path: "/contact",
+  });
   return (
     <section className="space-y-8">
       <header className="space-y-2 max-w-xl">
@@ -48,9 +57,9 @@ const ContactPage: React.FC = () => {
         </div>
 
         {/* Right: glass contact card */}
-        <motion.div
-          className="glass-panel relative p-5 sm:p-6"
-          whileHover={{ y: -4, scale: 1.01 }}
+        <ScrollReveal
+          className="glass-panel relative p-4 sm:p-6"
+          parallaxStrength={5}
         >
           <div className="pointer-events-none absolute inset-px rounded-[0.5rem] border border-[color:var(--glass-border-soft)]" />
           <form className="relative z-10 space-y-4 text-[0.9rem] text-[color:var(--fg-soft)]">
@@ -112,7 +121,7 @@ const ContactPage: React.FC = () => {
               Send
             </motion.button>
           </form>
-        </motion.div>
+        </ScrollReveal>
       </div>
     </section>
   );
