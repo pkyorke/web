@@ -2,6 +2,17 @@ import React, { useMemo, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
 export type BioId = "short" | "medium" | "long";
+const [activeBioId, setActiveBioId] = useState<BioId>("short");
+const [lightboxImage, setLightboxImage] = useState<PressImage | null>(null);
+const [copiedBio, setCopiedBio] = useState(false);
+const shouldReduceMotion = useReducedMotion();
+const handleCopyBioClick = async () => {
+  const ok = await copyBioToClipboard(activeBio.preview);
+  if (ok) {
+    setCopiedBio(true);
+    window.setTimeout(() => setCopiedBio(false), 1600);
+  }
+};
 
 interface BioDescriptor {
   id: BioId;
@@ -88,23 +99,33 @@ const randomPressRoute = () => {
   return routes[idx];
 };
 
-async function copyBioToClipboard(text: string) {
-  try {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
+async function copyBioToClipboard(text: string): Promise<boolean> {
+  // Try modern async clipboard API first (secure contexts)
+  if (typeof navigator !== "undefined" && navigator.clipboard && window.isSecureContext) {
+    try {
       await navigator.clipboard.writeText(text);
-    } else {
-      const area = document.createElement("textarea");
-      area.value = text;
-      area.style.position = "fixed";
-      area.style.opacity = "0";
-      document.body.appendChild(area);
-      area.focus();
-      area.select();
-      document.execCommand("copy");
-      document.body.removeChild(area);
+      return true;
+    } catch {
+      // fall through to legacy path
     }
+  }
+
+  // Fallback: hidden textarea + execCommand
+  try {
+    const area = document.createElement("textarea");
+    area.value = text;
+    area.style.position = "fixed";
+    area.style.left = "-9999px";
+    area.style.top = "0";
+    area.style.opacity = "0";
+    document.body.appendChild(area);
+    area.focus();
+    area.select();
+    const ok = document.execCommand("copy");
+    document.body.removeChild(area);
+    return ok;
   } catch {
-    // Silent failure for now.
+    return false;
   }
 }
 
@@ -245,13 +266,14 @@ const PressPage: React.FC = () => {
               <div className="mt-4 flex flex-wrap gap-3">
                 <button
                   type="button"
-                  onClick={() => copyBioToClipboard(activeBio.preview)}
+                  onClick={handleCopyBioClick}
                   className="inline-flex items-center rounded-lg border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-4 py-1.5 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-soft)]"
                 >
-                  Copy to clipboard
+                  {copiedBio ? "Copied" : "Copy to clipboard"}
                 </button>
                 <a
                   href={activeBio.downloadHref}
+                  download={`${activeBio.id}-bio.md`}
                   className="inline-flex items-center rounded-lg border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-4 py-1.5 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-soft)]"
                 >
                   Download .md
@@ -309,6 +331,7 @@ const PressPage: React.FC = () => {
                     <div className="pt-1">
                       <a
                         href={img.downloadHref}
+                        download
                         className="text-[0.75rem] font-mono uppercase tracking-[0.18em] text-[color:var(--accent-ember)] underline underline-offset-4"
                         onClick={(e) => e.stopPropagation()}
                       >
