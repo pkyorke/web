@@ -69,9 +69,9 @@ const AppShell: React.FC = () => {
                 to={item.to}
                 className={({ isActive }) =>
                   [
-                    "relative rounded-lg px-5 py-2.5 transition-colors",
+                    "relative rounded-lg px-6 py-3 transition-colors",
                     isActive
-                      ? "text-[color:var(--fg-primary)]"
+                      ? "text-[color:var(--fg-invert)] font-medium"
                       : "text-[color:var(--fg-muted)] hover:text-[color:var(--fg-primary)]",
                   ].join(" ")
                 }
@@ -82,7 +82,7 @@ const AppShell: React.FC = () => {
                     {isActive && (
                     <motion.span
                       layoutId="nav-pill"
-                      className="absolute inset-0 rounded-lg"
+                      className="absolute -inset-[2px] rounded-lg"
                       style={{
                         background:
                           theme === "dark"
