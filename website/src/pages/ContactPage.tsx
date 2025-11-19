@@ -106,14 +106,15 @@ const ContactPage: React.FC = () => {
         >
           <div className="pointer-events-none absolute inset-px rounded-[0.5rem] border border-[color:var(--glass-border-soft)]" />
           <form
-              className="relative z-10 space-y-4 text-[0.9rem] text-[color:var(--fg-soft)]"
-              onSubmit={handleSubmit}
-              method="POST"
-            >
+            className="relative z-10 space-y-4 text-[0.9rem] text-[color:var(--fg-soft)]"
+            onSubmit={handleSubmit}
+            method="POST"
+          >
             <div className="font-mono uppercase tracking-[0.2em] text-[color:var(--fg-muted)]">
               Send a note
             </div>
-
+          
+            {/* Name + Email side by side */}
             <div className="grid gap-3 sm:grid-cols-2">
               <div className="space-y-1">
                 <label className="text-[0.8rem] text-[color:var(--fg-muted)]">
@@ -125,28 +126,46 @@ const ContactPage: React.FC = () => {
                   required
                   className="w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-ember)]"
                 />
-                
+              </div>
+          
+              <div className="space-y-1">
+                <label className="text-[0.8rem] text-[color:var(--fg-muted)]">
+                  Email
+                </label>
                 <input
                   type="email"
                   name="email"
                   required
                   className="w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-ember)]"
                 />
-                
-                <input
-                  type="text"
-                  name="subject"
-                  className="w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-ember)]"
-                />
-                
-                <textarea
-                  rows={4}
-                  name="message"
-                  required
-                  className="w-full resize-none rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-ember)]"
-                />
+              </div>
             </div>
-
+          
+            {/* Subject */}
+            <div className="space-y-1">
+              <label className="text-[0.8rem] text-[color:var(--fg-muted)]">
+                Subject
+              </label>
+              <input
+                type="text"
+                name="subject"
+                className="w-full rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-ember)]"
+              />
+            </div>
+          
+            {/* Message */}
+            <div className="space-y-1">
+              <label className="text-[0.8rem] text-[color:var(--fg-muted)]">
+                Message
+              </label>
+              <textarea
+                rows={4}
+                name="message"
+                required
+                className="w-full resize-none rounded-[0.9rem] border border-[color:var(--line-subtle)] bg-[color:var(--bg-2)] px-3 py-2 text-[0.9rem] outline-none focus:border-[color:var(--accent-ember)]"
+              />
+            </div>
+          
             <motion.button
               type="submit"
               whileHover={status === "idle" ? { scale: 1.03 } : undefined}
@@ -164,14 +183,15 @@ const ContactPage: React.FC = () => {
                 ? "Sent"
                 : "Send"}
             </motion.button>
-                        {status !== "idle" && (
-            <p className="pt-1 text-[0.8rem] text-[color:var(--fg-muted)]">
-              {status === "success" && "Thank you — your message has been sent."}
-              {status === "error" &&
-                (errorMessage ??
-                  "There was a problem sending your message. Please try again or email directly.")}
-            </p>
-          )}
+          
+            {status !== "idle" && (
+              <p className="pt-1 text-[0.8rem] text-[color:var(--fg-muted)]">
+                {status === "success" && "Thank you — your message has been sent."}
+                {status === "error" &&
+                  (errorMessage ??
+                    "There was a problem sending your message. Please try again or email directly.")}
+              </p>
+            )}
           </form>
         </ScrollReveal>
       </div>
