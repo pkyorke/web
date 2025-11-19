@@ -75,11 +75,13 @@
   --line-strong: rgba(15, 23, 42, 0.2);
 
    /* Light theme: amber is primary accent, cyan secondary */
-  --accent-core: #e29a3a;
+    --accent-core: #e29a3a;
   --accent-soft: #ffc15a;
   --accent-deep: #b2661c;
-  --accent-ember: #37e0d7;
-  --accent-ember-deep: #0f9ca4;
+
+  /* Ember: warm amber highlight in light mode as well */
+  --accent-ember: #e29a3a;
+  --accent-ember-deep: #b2661c;
 
   --glass-tint: rgba(255, 255, 255, 0.86);
   --glass-border: rgba(15, 23, 42, 0.18);
@@ -397,6 +399,8 @@ code {
 
 .home-pill-underline {
   position: relative;
+  text-decoration: none;         /* kill inherited link underline */
+  text-decoration-color: transparent;
 }
 
 .home-pill-underline::after {
@@ -414,3 +418,4 @@ code {
 :root[data-theme="light"] .home-pill-underline::after {
   background-color: #ffffff;
 }
+
