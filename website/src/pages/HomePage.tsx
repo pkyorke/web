@@ -72,7 +72,7 @@ const HomePage: React.FC = () => {
             <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
               <Link
                 to="/works"
-                className="inline-flex items-center rounded-lg px-5 py-2 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-invert)]"
+                className="cta-primary inline-flex items-center rounded-lg px-5 py-2 text-[0.75rem] font-mono uppercase tracking-[0.18em] text-[color:var(--fg-invert)]"
                 style={{
                   backgroundImage:
                     "linear-gradient(120deg,var(--accent-soft),var(--accent-deep))",
