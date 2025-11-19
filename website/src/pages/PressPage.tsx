@@ -310,6 +310,8 @@ const PressPage: React.FC = () => {
                       src={img.src}
                       alt={img.alt}
                       className="h-48 w-full object-cover sm:h-52"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <div className="space-y-1 px-3 py-3 text-[0.8rem]">
