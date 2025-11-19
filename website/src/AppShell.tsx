@@ -69,7 +69,7 @@ const AppShell: React.FC = () => {
                 to={item.to}
                 className={({ isActive }) =>
                   [
-                    "relative rounded-full px-4 py-2 transition-colors",
+                    "relative rounded-lg px-5 py-2.5 transition-colors",
                     isActive
                       ? "text-[color:var(--fg-primary)]"
                       : "text-[color:var(--fg-muted)] hover:text-[color:var(--fg-primary)]",
@@ -82,7 +82,7 @@ const AppShell: React.FC = () => {
                     {isActive && (
                     <motion.span
                       layoutId="nav-pill"
-                      className="absolute inset-0 rounded-full"
+                      className="absolute inset-0 rounded-lg"
                       style={{
                         background:
                           theme === "dark"
@@ -109,11 +109,11 @@ const AppShell: React.FC = () => {
             <button
               type="button"
               onClick={toggleTheme}
-              className="relative ml-1 flex h-7 w-10 items-center rounded-full border border-[color:var(--glass-border-soft)] bg-[color:var(--bg-2)] px-1 text-[0.6rem] text-[color:var(--fg-muted)] outline-none"
+              className="relative ml-1 flex h-7 w-10 items-center rounded-lg border border-[color:var(--glass-border-soft)] bg-[color:var(--bg-2)] px-1 text-[0.6rem] text-[color:var(--fg-muted)] outline-none"
             >
               <motion.div
                 layout
-                className="flex h-5 w-5 items-center justify-center rounded-full"
+                className="flex h-5 w-5 items-center justify-center rounded-lg"
                 style={{
                   background:
                     theme === "dark"
