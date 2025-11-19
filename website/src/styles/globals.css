@@ -204,8 +204,13 @@ a:hover {
 /* Focus rings */
 
 :focus-visible {
-  outline: 2px solid rgba(55, 224, 215, 0.9);
+  outline: 2px solid var(--accent-soft); /* default: cyan in dark */
   outline-offset: 3px;
+}
+
+/* Light mode: outer ring uses ember instead of cyan */
+:root[data-theme="light"] :focus-visible {
+  outline-color: var(--accent-ember);
 }
 
 /* 
@@ -419,3 +424,17 @@ code {
   background-color: #ffffff;
 }
 
+/* Contact field focus behavior ---------------------------------------- */
+.contact-field {
+  transition: border-color 160ms ease-out, background-color 160ms ease-out;
+}
+
+/* Dark mode: inner stroke cyan (accent-soft) */
+:root[data-theme="dark"] .contact-field:focus {
+  border-color: var(--accent-soft);
+}
+
+/* Light mode: inner stroke ember (warm) */
+:root[data-theme="light"] .contact-field:focus {
+  border-color: var(--accent-ember);
+}
